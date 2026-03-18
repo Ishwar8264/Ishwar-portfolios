@@ -1,30 +1,157 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ishwar Portfolios (Next.js)
 
-## Getting Started
+Modern portfolio project built with Next.js App Router, Tailwind v4, and shadcn/ui.
 
-Run the development server:
+## Run
 
 ```bash
 pnpm dev
+pnpm lint
+pnpm build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Architecture Goal
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Keep pages clean and SEO friendly.
+- Use Server Components by default.
+- Keep Client Components minimal and isolated.
+- Pass data through props (no section should fetch its own random data flow).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Folder Structure (Team Convention)
 
-## Learn More
+```txt
+app/
+  layout.tsx
+  page.tsx                # clean composition only
+  globals.css
 
-To learn more about Next.js, take a look at the following resources:
+components/
+  ui/                     # shadcn primitives only
+  home/
+    index.tsx             # section container (server)
+    hero.tsx              # server
+    hero-anim.client.tsx  # client wrapper (if needed)
+  about/
+    index.tsx
+  skills/
+    index.tsx
+  projects/
+    index.tsx
+    project-card.tsx
+    project-filter.client.tsx
+  contact/
+    index.tsx
+  shared/
+    container.tsx
+    section-title.tsx
+    reveal.client.tsx
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+content/
+  profile.ts
+  skills.ts
+  projects.ts
+  experience.ts
+  social.ts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+lib/
+  utils.ts
+  content.ts              # selectors/filters/sorting helpers
 
-## Deploy on Vercel
+types/
+  content.ts
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Data Flow (Single Direction)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. `content/*.ts` keeps static portfolio data.
+2. `app/page.tsx` imports content and passes props to sections.
+3. `components/<section>/index.tsx` receives typed props and renders UI.
+4. If interaction is needed, server section uses a small `*.client.tsx` wrapper.
+
+Rule: section components should be prop-driven and predictable.
+
+## Server vs Client Rules
+
+### Default
+
+- Every component is Server Component unless there is a real client need.
+
+### Use Client Component only when required
+
+Use `"use client"` only for:
+
+- `useState`, `useEffect`, `useRef`
+- browser APIs (`window`, `document`, `localStorage`, `IntersectionObserver`)
+- event-heavy UI (filters, tabs with local state, animated counters)
+
+### Import direction
+
+- Server -> Client: allowed
+- Client -> Server: not allowed
+
+## Client Wrapper Pattern (Recommended)
+
+Use tiny client islands instead of converting full sections to client.
+
+```tsx
+// components/about/index.tsx (Server)
+import Reveal from "@/components/shared/reveal.client";
+
+export default function AboutSection({ title, summary }: { title: string; summary: string }) {
+  return (
+    <section id="about">
+      <Reveal>
+        <h2>{title}</h2>
+        <p>{summary}</p>
+      </Reveal>
+    </section>
+  );
+}
+```
+
+## Clean Page Pattern (SEO + Maintainability)
+
+`app/page.tsx` should stay minimal:
+
+- Compose sections only.
+- No heavy UI logic.
+- No duplicated text/data.
+- Keep metadata in `app/layout.tsx` (and section-level semantic headings).
+
+Example pattern:
+
+```tsx
+import HomeSection from "@/components/home";
+import AboutSection from "@/components/about";
+import ProjectsSection from "@/components/projects";
+import { profile, projects } from "@/content";
+
+export default function Page() {
+  return (
+    <main>
+      <HomeSection profile={profile} />
+      <AboutSection profile={profile} />
+      <ProjectsSection projects={projects} />
+    </main>
+  );
+}
+```
+
+## Component Contract Rules
+
+- Components should receive data via props.
+- Avoid hidden dependencies inside section components.
+- Define and export explicit types for props.
+- Keep side effects only inside client wrappers.
+
+## Future Dev Checklist
+
+When adding a new section:
+
+1. Add data in `content/*`.
+2. Define/extend types in `types/*`.
+3. Create section in `components/<section>/index.tsx` (server first).
+4. Add `*.client.tsx` only if interaction is truly needed.
+5. Compose section in `app/page.tsx`.
+
+This keeps the codebase scalable, SEO-safe, and easy to maintain.
