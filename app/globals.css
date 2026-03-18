@@ -261,6 +261,17 @@
   }
 }
 
+@keyframes animated-name-cursor-blink {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  46%,
+  100% {
+    opacity: 0;
+  }
+}
+
 .motion-demo-shell {
   background-image:
     linear-gradient(
@@ -519,6 +530,114 @@
   background: color-mix(in oklch, var(--muted) 74%, transparent);
 }
 
+.animated-name-root {
+  --name-tone-1: color-mix(in oklch, var(--chart-1) 74%, var(--foreground));
+  --name-tone-2: color-mix(in oklch, var(--chart-2) 74%, var(--foreground));
+  --name-tone-3: color-mix(in oklch, var(--chart-3) 74%, var(--foreground));
+  --name-tone-4: color-mix(in oklch, var(--primary) 80%, var(--foreground));
+  --name-tone-5: color-mix(in oklch, var(--accent) 60%, var(--foreground));
+  --name-tone-6: color-mix(in oklch, var(--chart-5) 72%, var(--foreground));
+  display: inline-flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  padding-bottom: 0.04em;
+}
+
+.animated-name-place-hero {
+  letter-spacing: -0.02em;
+}
+
+.animated-name-place-about {
+  letter-spacing: -0.018em;
+}
+
+.animated-name-place-navbar {
+  line-height: 1;
+  letter-spacing: -0.015em;
+}
+
+.animated-name-place-inline {
+  letter-spacing: -0.016em;
+}
+
+.animated-name-palette-brand {
+  --name-tone-1: color-mix(in oklch, var(--chart-1) 74%, var(--foreground));
+  --name-tone-2: color-mix(in oklch, var(--chart-2) 74%, var(--foreground));
+  --name-tone-3: color-mix(in oklch, var(--chart-3) 74%, var(--foreground));
+  --name-tone-4: color-mix(in oklch, var(--primary) 80%, var(--foreground));
+  --name-tone-5: color-mix(in oklch, var(--accent) 60%, var(--foreground));
+  --name-tone-6: color-mix(in oklch, var(--chart-5) 72%, var(--foreground));
+}
+
+.animated-name-palette-warm {
+  --name-tone-1: #ef4444;
+  --name-tone-2: #f97316;
+  --name-tone-3: #f59e0b;
+  --name-tone-4: #eab308;
+  --name-tone-5: #fb7185;
+  --name-tone-6: #dc2626;
+}
+
+.animated-name-palette-ocean {
+  --name-tone-1: #2563eb;
+  --name-tone-2: #0891b2;
+  --name-tone-3: #0ea5e9;
+  --name-tone-4: #14b8a6;
+  --name-tone-5: #22c55e;
+  --name-tone-6: #0284c7;
+}
+
+.animated-name-palette-neon {
+  --name-tone-1: #f43f5e;
+  --name-tone-2: #a855f7;
+  --name-tone-3: #3b82f6;
+  --name-tone-4: #22c55e;
+  --name-tone-5: #eab308;
+  --name-tone-6: #f97316;
+}
+
+.animated-name-space {
+  width: 0.3em;
+}
+
+.animated-name-letter {
+  position: relative;
+  display: inline-block;
+}
+
+.animated-name-cursor {
+  display: inline-block;
+  margin-left: 0.06em;
+  color: color-mix(in oklch, var(--foreground) 82%, var(--primary));
+  animation: animated-name-cursor-blink 0.9s steps(1, end) infinite;
+}
+
+.animated-name-tone-1 {
+  color: var(--name-tone-1);
+}
+
+.animated-name-tone-2 {
+  color: var(--name-tone-2);
+}
+
+.animated-name-tone-3 {
+  color: var(--name-tone-3);
+}
+
+.animated-name-tone-4 {
+  color: var(--name-tone-4);
+}
+
+.animated-name-tone-5 {
+  color: var(--name-tone-5);
+}
+
+.animated-name-tone-6 {
+  color: var(--name-tone-6);
+}
+
 .hero-wrap {
   position: relative;
   isolation: isolate;
@@ -740,6 +859,10 @@ section[id] {
 
 @media (prefers-reduced-motion: reduce) {
   .motion-demo-orb {
+    animation: none;
+  }
+
+  .animated-name-cursor {
     animation: none;
   }
 

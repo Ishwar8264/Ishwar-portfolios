@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import AnimatedName from "@/components/home/animated-name.client";
 import type { ProfileData } from "@/types/portfolio";
 
 type AboutSectionProps = {
@@ -26,8 +27,13 @@ export default function AboutSection({ profile }: AboutSectionProps) {
         <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
           About
         </p>
-        <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-          {profile.name}
+        <h2 className="font-semibold tracking-tight">
+          <AnimatedName
+            name={profile.name}
+            place="about"
+            size="xl"
+            palette="warm"
+          />
         </h2>
         <p className="text-base text-muted-foreground sm:text-lg">
           {profile.summary}
