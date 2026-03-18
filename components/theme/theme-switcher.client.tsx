@@ -30,6 +30,7 @@ import {
 type ThemeSwitcherProps = {
   className?: string;
   fullWidth?: boolean;
+  onThemeSelect?: (theme: AppTheme) => void;
 };
 
 const themeIcons: Record<AppTheme, LucideIcon> = {
@@ -48,6 +49,7 @@ const themeLabelByValue = Object.fromEntries(
 export default function ThemeSwitcher({
   className,
   fullWidth = false,
+  onThemeSelect,
 }: ThemeSwitcherProps) {
   const [open, setOpen] = useState(false);
   const theme = useThemeStore((state) => state.theme);
@@ -89,7 +91,9 @@ export default function ThemeSwitcher({
           <DropdownMenuRadioGroup
             value={theme}
             onValueChange={(value) => {
-              setTheme(value as AppTheme);
+              const nextTheme = value as AppTheme;
+              setTheme(nextTheme);
+              onThemeSelect?.(nextTheme);
               setOpen(false);
             }}
           >

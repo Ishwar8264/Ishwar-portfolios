@@ -91,7 +91,11 @@ export default function MobileNavbar({ config, classNames }: MobileNavbarProps) 
         </nav>
 
         <div className="portfolio-nav-mobile-divider mt-3 border-t pt-3">
-          <ThemeSwitcher fullWidth className="portfolio-nav-theme" />
+          <ThemeSwitcher
+            fullWidth
+            className="portfolio-nav-theme"
+            onThemeSelect={() => setOpen(false)}
+          />
         </div>
 
         {config.cta ? (
