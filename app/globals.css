@@ -291,7 +291,7 @@
 
 .portfolio-nav-shell {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   border-color: color-mix(in oklch, var(--border) 72%, var(--primary));
   background:
     linear-gradient(
@@ -421,8 +421,8 @@
 
 .portfolio-nav-toggle {
   border-color: color-mix(in oklch, var(--border) 62%, var(--primary));
-  background: color-mix(in oklch, var(--background) 76%, transparent);
-  color: color-mix(in oklch, var(--foreground) 86%, var(--primary));
+  background: color-mix(in oklch, var(--background) 82%, transparent);
+  color: var(--foreground);
   box-shadow: 0 5px 12px color-mix(in oklch, var(--primary) 16%, transparent);
 }
 
