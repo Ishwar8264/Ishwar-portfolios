@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "@/components/navigation";
+import ThemeProvider from "@/components/theme/theme-provider.client";
+import ThemeScript from "@/components/theme/theme-script";
 import { navbarConfig } from "@/content/navigation";
 
 import "./globals.css";
@@ -27,10 +29,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="light" suppressHydrationWarning>
+      <head>
+        <ThemeScript />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <ThemeProvider />
         <Navbar config={navbarConfig} />
         <div className="pt-20 md:pt-24">{children}</div>
       </body>

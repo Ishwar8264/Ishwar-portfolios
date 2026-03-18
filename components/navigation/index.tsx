@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import type { NavbarClassNames, NavbarConfig } from "@/types/navigation";
+import ThemeSwitcher from "@/components/theme/theme-switcher.client";
 
 import MobileNavbar from "./mobile-navbar.client";
 
@@ -96,6 +97,7 @@ export default function Navbar({ config, classNames }: NavbarProps) {
           </nav>
 
           <div className="flex items-center gap-2">
+            <ThemeSwitcher className="hidden md:block" />
             {config.cta ? (
               <NavAnchor
                 href={config.cta.href}

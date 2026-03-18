@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
 import { Button, buttonVariants } from "@/components/ui/button";
+import ThemeSwitcher from "@/components/theme/theme-switcher.client";
 import { cn } from "@/lib/utils";
 import type { NavbarClassNames, NavbarConfig } from "@/types/navigation";
 
@@ -83,6 +84,10 @@ export default function MobileNavbar({ config, classNames }: MobileNavbarProps) 
             />
           ))}
         </nav>
+
+        <div className="mt-3 border-t border-border pt-3">
+          <ThemeSwitcher fullWidth />
+        </div>
 
         {config.cta ? (
           <NavAnchor
