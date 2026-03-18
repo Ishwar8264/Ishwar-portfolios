@@ -2,18 +2,26 @@ import type { ContactData, ProfileData } from "@/types/portfolio";
 
 export const profileData: ProfileData = {
   name: "Ishwar Sahani",
-  role: "Frontend Software Engineer",
-  location: "India",
-  tagline: "Designing fast, scalable interfaces with product-first thinking.",
+  role: "Software Engineer (Frontend)",
+  location: "Gurgaon, India",
+  tagline: "Shipping product-grade frontend systems for startup velocity.",
   summary:
-    "Astute full stack web developer with strong frontend depth in JavaScript, React, and modern UI architecture. Focused on clean systems, accessibility, and high-performance user experiences.",
+    "Frontend software engineer currently working on Klakar at RiverHead Software. Strong in React ecosystem, Zustand state management, and Next.js across both App Router and Pages Router. Also collaborate with Java backend and API testing workflows while owning cross-functional startup execution.",
   codingHours: "1200+",
-  focus: ["Next.js", "React", "TypeScript", "Tailwind CSS", "MERN"],
+  focus: [
+    "React + Zustand",
+    "Next.js (App + Pages Router)",
+    "TypeScript",
+    "Tailwind CSS",
+    "Startup Product Delivery",
+  ],
 };
 
 export const contactData: ContactData = {
   email: "ishwar.sahani119@gmail.com",
-  phone: "+91 78144 85235",
+  phone: "+91 82648 82518",
   linkedin: "https://www.linkedin.com/in/ishwarsahani/",
   github: "https://github.com/Ishwar8264",
 };
+
+export const resumeHref = "/resume/resume_ishwar_sahani.pdf";

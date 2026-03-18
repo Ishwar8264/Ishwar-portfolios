@@ -2,6 +2,14 @@ import type { ProjectData } from "@/types/portfolio";
 
 export const featuredProjects: ProjectData[] = [
   {
+    title: "Klakar",
+    description:
+      "Creative network platform for artists with portfolio-first discovery, jobs, gigs, classes, and AI-powered growth tools. Currently contributing on the frontend as part of RiverHead Software team.",
+    stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "AI Features"],
+    liveUrl: "https://klakar.com/",
+    status: "Current Product",
+  },
+  {
     title: "Learning Network",
     description:
       "Task management platform with authentication, real-time interaction, and responsive UI flow for better team productivity.",

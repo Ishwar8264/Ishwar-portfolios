@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { resumeHref } from "@/content/profile";
 import type { ContactData, ProfileData } from "@/types/portfolio";
 
 import MotionDemo from "./motion-demo.client";
@@ -43,6 +44,13 @@ export default function HomeSection({ profile, contact }: HomeSectionProps) {
             href="#projects"
           >
             View Projects
+          </a>
+          <a
+            className="inline-flex h-10 items-center justify-center rounded-lg border border-border px-4 text-sm font-medium transition-colors hover:bg-muted"
+            href={resumeHref}
+            download
+          >
+            Download Resume
           </a>
           <a
             className="inline-flex h-9 items-center justify-center rounded-lg border border-border px-4 text-sm font-medium transition-colors hover:bg-muted"

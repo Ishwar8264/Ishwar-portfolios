@@ -28,3 +28,14 @@ export type ProjectData = {
   repoUrl?: string;
   status: string;
 };
+
+export type ExperienceData = {
+  company: string;
+  companyUrl?: string;
+  role: string;
+  period: string;
+  location: string;
+  projectName?: string;
+  projectUrl?: string;
+  highlights: string[];
+};

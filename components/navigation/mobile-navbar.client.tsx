@@ -17,12 +17,14 @@ function NavAnchor({
   href,
   label,
   external,
+  download,
   className,
   onClick,
 }: {
   href: string;
   label: string;
   external?: boolean;
+  download?: boolean;
   className?: string;
   onClick?: () => void;
 }) {
@@ -32,6 +34,7 @@ function NavAnchor({
       href={href}
       target={external ? "_blank" : undefined}
       rel={external ? "noreferrer noopener" : undefined}
+      download={download}
       onClick={onClick}
     >
       {label}
@@ -79,6 +82,7 @@ export default function MobileNavbar({ config, classNames }: MobileNavbarProps) 
               href={link.href}
               label={link.label}
               external={link.external}
+              download={link.download}
               onClick={() => setOpen(false)}
               className="rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
             />
@@ -94,6 +98,7 @@ export default function MobileNavbar({ config, classNames }: MobileNavbarProps) 
             href={config.cta.href}
             label={config.cta.label}
             external={config.cta.external}
+            download={config.cta.download}
             onClick={() => setOpen(false)}
             className={cn(
               buttonVariants({ size: "sm" }),

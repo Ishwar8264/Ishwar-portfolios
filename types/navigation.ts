@@ -2,12 +2,14 @@ export type NavigationLink = {
   label: string;
   href: string;
   external?: boolean;
+  download?: boolean;
 };
 
 export type NavigationCta = {
   label: string;
   href: string;
   external?: boolean;
+  download?: boolean;
 };
 
 export type NavigationBrand = {

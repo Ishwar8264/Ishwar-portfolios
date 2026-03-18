@@ -13,11 +13,13 @@ function NavAnchor({
   href,
   label,
   external,
+  download,
   className,
 }: {
   href: string;
   label: string;
   external?: boolean;
+  download?: boolean;
   className?: string;
 }) {
   return (
@@ -25,6 +27,7 @@ function NavAnchor({
       href={href}
       target={external ? "_blank" : undefined}
       rel={external ? "noreferrer noopener" : undefined}
+      download={download}
       className={className}
     >
       {label}
@@ -73,6 +76,7 @@ export default function Navbar({ config, classNames }: NavbarProps) {
                 href={link.href}
                 label={link.label}
                 external={link.external}
+                download={link.download}
                 className={cn(baseLinkClasses, "px-2 py-1.5 text-xs")}
               />
             ))}
@@ -91,6 +95,7 @@ export default function Navbar({ config, classNames }: NavbarProps) {
                 href={link.href}
                 label={link.label}
                 external={link.external}
+                download={link.download}
                 className={cn(baseLinkClasses, classNames?.link)}
               />
             ))}
@@ -103,6 +108,7 @@ export default function Navbar({ config, classNames }: NavbarProps) {
                 href={config.cta.href}
                 label={config.cta.label}
                 external={config.cta.external}
+                download={config.cta.download}
                 className={cn(ctaClasses, "hidden md:inline-flex")}
               />
             ) : null}

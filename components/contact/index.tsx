@@ -1,4 +1,5 @@
 import type { ContactData } from "@/types/portfolio";
+import { resumeHref } from "@/content/profile";
 
 type ContactSectionProps = {
   contact: ContactData;
@@ -45,6 +46,13 @@ export default function ContactSection({ contact }: ContactSectionProps) {
               className="inline-flex h-10 items-center justify-center rounded-lg border border-border px-4 text-sm font-medium transition-colors hover:bg-muted"
             >
               GitHub
+            </a>
+            <a
+              href={resumeHref}
+              download
+              className="inline-flex h-10 items-center justify-center rounded-lg border border-border px-4 text-sm font-medium transition-colors hover:bg-muted"
+            >
+              Download Resume
             </a>
           </div>
         </div>
