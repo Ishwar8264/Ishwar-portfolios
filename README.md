@@ -10,6 +10,17 @@ pnpm lint
 pnpm build
 ```
 
+## Deploy Flow
+
+- Source of truth: `Ishwar8264/Ishwar-portfolios` (this repo).
+- Live site repo: `Ishwar8264/Ishwar8264.github.io`.
+- Auto deploy workflow: [`.github/workflows/deploy-user-pages.yml`](.github/workflows/deploy-user-pages.yml)
+  - Trigger: push to `main`
+  - Build: `pnpm build` (Next static export)
+  - Publish target: `Ishwar8264/Ishwar8264.github.io` `main` branch
+
+This disconnects the old manual HTML/CSS/JS publishing flow. Only this Next.js source repo should be edited.
+
 ## Architecture Goal
 
 - Keep pages clean and SEO friendly.
