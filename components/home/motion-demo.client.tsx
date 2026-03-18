@@ -40,11 +40,11 @@ export default function MotionDemo() {
 
   return (
     <LazyMotion features={domAnimation}>
-      <div className="motion-demo-shell relative mt-4 overflow-hidden rounded-3xl border border-border bg-card/70 p-5 sm:p-7">
+      <div className="motion-demo-shell relative mt-1 overflow-hidden rounded-3xl border border-border bg-card/70 p-4 sm:p-5">
         {!shouldReduceMotion ? (
           <m.div
             aria-hidden
-            className="motion-demo-orb absolute -top-16 -right-10 h-36 w-36 rounded-full"
+            className="motion-demo-orb absolute -top-14 -right-8 h-28 w-28 rounded-full"
             initial={{ opacity: 0, scale: 0.75 }}
             animate={{ opacity: 0.32, scale: 1 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
@@ -61,13 +61,13 @@ export default function MotionDemo() {
           <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
             Current Snapshot
           </p>
-          <h3 className="mt-2 text-xl font-semibold tracking-tight sm:text-2xl">
+          <h3 className="mt-1.5 text-lg font-semibold tracking-tight sm:text-xl">
             Building Klakar as a frontend software engineer.
           </h3>
         </m.div>
 
         <m.div
-          className="relative z-10 mt-5 grid gap-3 sm:grid-cols-3"
+          className="relative z-10 mt-3 grid gap-2 md:grid-cols-3"
           variants={containerVariants}
           initial={shouldReduceMotion ? false : "hidden"}
           whileInView={shouldReduceMotion ? undefined : "show"}
@@ -77,10 +77,12 @@ export default function MotionDemo() {
             <m.article
               key={item.title}
               variants={itemVariants}
-              className="motion-demo-card rounded-2xl border border-border/70 bg-background/75 p-4 transition-transform duration-300 hover:-translate-y-1"
+              className="motion-demo-card rounded-xl border border-border/70 bg-background/75 p-3 transition-transform duration-300 hover:-translate-y-0.5"
             >
-              <h4 className="text-sm font-semibold">{item.title}</h4>
-              <p className="mt-1 text-sm text-muted-foreground">{item.detail}</p>
+              <h4 className="text-xs font-semibold uppercase tracking-[0.1em] text-muted-foreground">
+                {item.title}
+              </h4>
+              <p className="mt-1 text-sm text-foreground/90">{item.detail}</p>
             </m.article>
           ))}
         </m.div>

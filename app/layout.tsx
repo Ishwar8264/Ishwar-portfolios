@@ -45,7 +45,7 @@ export default function RootLayout({
       >
         <ThemeProvider />
         <Navbar config={navbarConfig} />
-        <div className="pt-20 md:pt-24">{children}</div>
+        <div>{children}</div>
       </body>
     </html>
   );
