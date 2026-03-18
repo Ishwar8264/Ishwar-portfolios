@@ -1,37 +1,20 @@
+import AboutSection from "@/components/about";
+import ContactSection from "@/components/contact";
 import HomeSection from "@/components/home";
+import ProjectsSection from "@/components/projects";
+import SkillsSection from "@/components/skills";
+import { profileData, contactData } from "@/content/profile";
+import { featuredProjects } from "@/content/projects";
+import { skillGroups } from "@/content/skills";
 
 export default function Home() {
   return (
     <main className="bg-background text-foreground">
-      <HomeSection />
-
-      <section
-        id="about"
-        className="mx-auto w-[min(1200px,95%)] border-t border-border py-24"
-      >
-        <h2 className="text-3xl font-semibold tracking-tight">About</h2>
-      </section>
-
-      <section
-        id="skills"
-        className="mx-auto w-[min(1200px,95%)] border-t border-border py-24"
-      >
-        <h2 className="text-3xl font-semibold tracking-tight">Skills</h2>
-      </section>
-
-      <section
-        id="projects"
-        className="mx-auto w-[min(1200px,95%)] border-t border-border py-24"
-      >
-        <h2 className="text-3xl font-semibold tracking-tight">Projects</h2>
-      </section>
-
-      <section
-        id="contact"
-        className="mx-auto w-[min(1200px,95%)] border-t border-border py-24"
-      >
-        <h2 className="text-3xl font-semibold tracking-tight">Contact</h2>
-      </section>
+      <HomeSection profile={profileData} contact={contactData} />
+      <AboutSection profile={profileData} />
+      <SkillsSection groups={skillGroups} />
+      <ProjectsSection projects={featuredProjects} />
+      <ContactSection contact={contactData} />
     </main>
   );
 }
