@@ -219,6 +219,54 @@
   --sidebar-ring: oklch(0.72 0.15 150);
 }
 
+@keyframes orbit-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-12px, 10px, 0);
+  }
+}
+
+.motion-demo-shell {
+  background-image:
+    linear-gradient(
+      125deg,
+      color-mix(in oklch, var(--accent) 12%, transparent) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      color-mix(in oklch, var(--primary) 22%, transparent) 0%,
+      transparent 48%
+    );
+}
+
+.motion-demo-orb {
+  background: radial-gradient(
+    circle at 30% 30%,
+    color-mix(in oklch, var(--primary) 64%, transparent),
+    transparent 70%
+  );
+  filter: blur(10px);
+  animation: orbit-float 11s ease-in-out infinite;
+}
+
+.motion-demo-card {
+  backdrop-filter: blur(8px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-demo-orb {
+    animation: none;
+  }
+
+  .motion-demo-card {
+    transition: none;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

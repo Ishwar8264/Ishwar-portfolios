@@ -1,24 +1,9 @@
-import { Button } from "@/components/ui/button";
+import HomeSection from "@/components/home";
 
 export default function Home() {
   return (
     <main className="bg-background text-foreground">
-      <section
-        id="home"
-        className="mx-auto flex min-h-[85vh] w-[min(1200px,95%)] flex-col items-start justify-center gap-6"
-      >
-        <p className="rounded-full border border-border px-4 py-1 text-xs uppercase tracking-[0.18em] text-muted-foreground">
-          Frontend Engineer
-        </p>
-        <h1 className="max-w-3xl text-4xl font-semibold tracking-tight sm:text-6xl">
-          Building fast and expressive interfaces for real products.
-        </h1>
-        <p className="max-w-2xl text-base text-muted-foreground sm:text-lg">
-          Server-first Next.js portfolio starter with flexible, customizable
-          navigation across desktop, tablet, and mobile.
-        </p>
-        <Button size="lg">View Projects</Button>
-      </section>
+      <HomeSection />
 
       <section
         id="about"
