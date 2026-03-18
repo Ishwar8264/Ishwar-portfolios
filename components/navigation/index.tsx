@@ -5,6 +5,7 @@ import type { NavbarClassNames, NavbarConfig } from "@/types/navigation";
 import ThemeSwitcher from "@/components/theme/theme-switcher.client";
 
 import MobileNavbar from "./mobile-navbar.client";
+import NavLinks from "./nav-links.client";
 
 type NavbarProps = {
   config: NavbarConfig;
@@ -86,16 +87,11 @@ export default function Navbar({ config, classNames }: NavbarProps) {
             )}
             aria-label="Primary"
           >
-            {config.links.map((link) => (
-              <NavAnchor
-                key={`tablet-${link.href}`}
-                href={link.href}
-                label={link.label}
-                external={link.external}
-                download={link.download}
-                className={cn(baseLinkClasses, "px-2.5 py-1.5 text-xs")}
-              />
-            ))}
+            <NavLinks
+              links={config.links}
+              itemClassName={cn(baseLinkClasses, "px-2.5 py-1.5 text-xs")}
+              activeClassName="portfolio-nav-link-active"
+            />
           </nav>
 
           <nav
@@ -105,16 +101,11 @@ export default function Navbar({ config, classNames }: NavbarProps) {
             )}
             aria-label="Primary"
           >
-            {config.links.map((link) => (
-              <NavAnchor
-                key={`desktop-${link.href}`}
-                href={link.href}
-                label={link.label}
-                external={link.external}
-                download={link.download}
-                className={cn(baseLinkClasses, classNames?.link)}
-              />
-            ))}
+            <NavLinks
+              links={config.links}
+              itemClassName={cn(baseLinkClasses, classNames?.link)}
+              activeClassName="portfolio-nav-link-active"
+            />
           </nav>
 
           <div className="portfolio-nav-actions flex items-center gap-2">

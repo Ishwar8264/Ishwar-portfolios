@@ -8,6 +8,8 @@ import ThemeSwitcher from "@/components/theme/theme-switcher.client";
 import { cn } from "@/lib/utils";
 import type { NavbarClassNames, NavbarConfig } from "@/types/navigation";
 
+import NavLinks from "./nav-links.client";
+
 type MobileNavbarProps = {
   config: NavbarConfig;
   classNames?: NavbarClassNames;
@@ -77,17 +79,12 @@ export default function MobileNavbar({ config, classNames }: MobileNavbarProps) 
         )}
       >
         <nav className="grid gap-1">
-          {config.links.map((link) => (
-            <NavAnchor
-              key={link.href}
-              href={link.href}
-              label={link.label}
-              external={link.external}
-              download={link.download}
-              onClick={() => setOpen(false)}
-              className="portfolio-nav-mobile-link rounded-lg px-3 py-2 text-sm font-medium transition-colors"
-            />
-          ))}
+          <NavLinks
+            links={config.links}
+            itemClassName="portfolio-nav-mobile-link rounded-lg px-3 py-2 text-sm font-medium transition-colors"
+            activeClassName="portfolio-nav-mobile-link-active"
+            onNavigate={() => setOpen(false)}
+          />
         </nav>
 
         <div className="portfolio-nav-mobile-divider mt-3 border-t pt-3">
