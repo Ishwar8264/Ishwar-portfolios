@@ -29,9 +29,13 @@ export const skillGroups: SkillGroup[] = [
     title: "Backend Integration",
     items: [
       "Java Backend API Testing",
+      "Swagger + Postman",
       "Node.js",
       "Express",
+      "PostgreSQL (SQL Basics)",
       "MongoDB",
+      "Prisma",
+      "Mongoose",
       "REST APIs",
       "Auth Flows",
     ],

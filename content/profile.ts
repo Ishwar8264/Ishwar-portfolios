@@ -6,11 +6,15 @@ export const profileData: ProfileData = {
   location: "Gurgaon, India",
   tagline: "Shipping product-grade frontend systems for startup velocity.",
   summary:
-    "Frontend software engineer currently working on Klakar at RiverHead Software. Strong in React ecosystem, Zustand state management, and Next.js across both App Router and Pages Router. Also collaborate with Java backend and API testing workflows while owning cross-functional startup execution.",
+    "Frontend software engineer currently working on Klakar at RiverHead Software on the latest Next.js App Router. Strong in React ecosystem and Zustand, with hands-on delivery in both App Router and Pages Router codebases. I handle server-side and client-side API integration, do API testing with Postman and Swagger (currently focused on Swagger), and work with PostgreSQL/SQL basics plus MongoDB with Prisma and Mongoose while collaborating with Java backend workflows and owning cross-functional startup execution.",
   codingHours: "1200+",
   focus: [
     "React + Zustand",
-    "Next.js (App + Pages Router)",
+    "Next.js (Klakar App Router + Pages)",
+    "Server + Client API Integration",
+    "Swagger + Postman API Testing",
+    "PostgreSQL + SQL Basics",
+    "MongoDB + Prisma + Mongoose",
     "TypeScript",
     "Tailwind CSS",
     "Startup Product Delivery",

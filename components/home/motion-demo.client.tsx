@@ -11,12 +11,12 @@ const highlights = [
   {
     title: "Current Product",
     detail:
-      "Working on Klakar, a platform for artist portfolios, gigs, jobs, and classes.",
+      "Working on Klakar (latest Next.js App Router), a platform for artist portfolios, gigs, jobs, and classes.",
   },
   {
     title: "Engineering Focus",
     detail:
-      "React, Zustand, Next.js (Pages + App Router), and Java backend API testing.",
+      "Server + client API integration, Swagger/Postman API testing (currently Swagger), and data-layer work with PostgreSQL/SQL basics plus MongoDB, Prisma, and Mongoose.",
   },
 ] as const;
 
