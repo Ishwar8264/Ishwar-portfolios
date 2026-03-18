@@ -6,6 +6,9 @@ export type ProfileData = {
   summary: string;
   codingHours: string;
   focus: string[];
+  currentCompany: string;
+  currentProduct: string;
+  currentRolePeriod: string;
 };
 
 export type ContactData = {

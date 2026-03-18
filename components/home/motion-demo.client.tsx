@@ -2,10 +2,22 @@
 
 import { LazyMotion, domAnimation, m, useReducedMotion } from "motion/react";
 
-const demoItems = [
-  { title: "Intro Reveal", detail: "Heading + CTA enter smoothly." },
-  { title: "Stagger Cards", detail: "Each card appears with slight delay." },
-  { title: "Hover Feedback", detail: "CSS handles subtle interaction polish." },
+const highlights = [
+  {
+    title: "Current Role",
+    detail:
+      "Software Engineer, Frontend at RiverHead Software (Aug 2025 — Present).",
+  },
+  {
+    title: "Current Product",
+    detail:
+      "Working on Klakar, a platform for artist portfolios, gigs, jobs, and classes.",
+  },
+  {
+    title: "Engineering Focus",
+    detail:
+      "React, Zustand, Next.js (Pages + App Router), and Java backend API testing.",
+  },
 ] as const;
 
 const containerVariants = {
@@ -47,10 +59,10 @@ export default function MotionDemo() {
           transition={{ duration: 0.5 }}
         >
           <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-            Home Demo
+            Current Snapshot
           </p>
           <h3 className="mt-2 text-xl font-semibold tracking-tight sm:text-2xl">
-            Motion handles entry flow, CSS handles interaction texture.
+            Building Klakar as a frontend software engineer.
           </h3>
         </m.div>
 
@@ -61,7 +73,7 @@ export default function MotionDemo() {
           whileInView={shouldReduceMotion ? undefined : "show"}
           viewport={{ once: true, amount: 0.3 }}
         >
-          {demoItems.map((item) => (
+          {highlights.map((item) => (
             <m.article
               key={item.title}
               variants={itemVariants}

@@ -15,6 +15,9 @@ export const profileData: ProfileData = {
     "Tailwind CSS",
     "Startup Product Delivery",
   ],
+  currentCompany: "RiverHead Software",
+  currentProduct: "Klakar",
+  currentRolePeriod: "Aug 2025 — Present",
 };
 
 export const contactData: ContactData = {
