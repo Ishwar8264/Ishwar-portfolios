@@ -5,6 +5,7 @@ import type { NavbarClassNames, NavbarConfig } from "@/types/navigation";
 import ThemeSwitcher from "@/components/theme/theme-switcher.client";
 
 import MobileNavbar from "./mobile-navbar.client";
+import NavLinks from "./nav-links.client";
 
 type NavbarProps = {
   config: NavbarConfig;
@@ -39,15 +40,20 @@ function NavAnchor({
 
 export default function Navbar({ config, classNames }: NavbarProps) {
   const baseLinkClasses =
-    "rounded-full px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground";
+    "portfolio-nav-link rounded-full px-3 py-2 text-sm font-medium text-muted-foreground transition-all";
   const ctaClasses =
-    "inline-flex h-7 items-center justify-center rounded-full bg-primary px-4 text-[0.8rem] font-medium text-primary-foreground transition-colors hover:bg-primary/90";
+    "portfolio-nav-cta inline-flex h-8 items-center justify-center rounded-full px-4 text-[0.78rem] font-semibold tracking-[0.02em] transition-all";
 
   return (
-    <header className={cn("fixed inset-x-0 top-0 z-40", classNames?.root)}>
+    <header
+      className={cn(
+        "portfolio-nav-root fixed inset-x-0 top-0 z-40",
+        classNames?.root,
+      )}
+    >
       <div
         className={cn(
-          "mx-auto mt-3 flex w-[min(1200px,95%)] items-center rounded-2xl border border-border/80 bg-background/85 px-3 shadow-sm backdrop-blur-md md:px-4",
+          "portfolio-nav-shell mx-auto mt-3 flex w-[min(1200px,95%)] items-center rounded-2xl border px-3 backdrop-blur-md md:px-4",
           classNames?.container,
         )}
       >
@@ -55,7 +61,7 @@ export default function Navbar({ config, classNames }: NavbarProps) {
           <a
             href={config.brand.href}
             className={cn(
-              "shrink-0 rounded-full border border-border px-2.5 py-1.5 text-sm font-semibold tracking-tight",
+              "portfolio-nav-brand shrink-0 rounded-full px-2.5 py-1.5 text-sm font-semibold tracking-tight",
               classNames?.brand,
             )}
           >
@@ -76,44 +82,34 @@ export default function Navbar({ config, classNames }: NavbarProps) {
 
           <nav
             className={cn(
-              "hidden items-center gap-1 rounded-full border border-border bg-muted/30 px-1.5 py-1 md:flex lg:hidden",
+              "portfolio-nav-menu portfolio-nav-menu-tablet hidden items-center gap-1 rounded-full px-1.5 py-1 md:flex lg:hidden",
               classNames?.tabletMenu,
             )}
             aria-label="Primary"
           >
-            {config.links.map((link) => (
-              <NavAnchor
-                key={`tablet-${link.href}`}
-                href={link.href}
-                label={link.label}
-                external={link.external}
-                download={link.download}
-                className={cn(baseLinkClasses, "px-2 py-1.5 text-xs")}
-              />
-            ))}
+            <NavLinks
+              links={config.links}
+              itemClassName={cn(baseLinkClasses, "px-2.5 py-1.5 text-xs")}
+              activeClassName="portfolio-nav-link-active"
+            />
           </nav>
 
           <nav
             className={cn(
-              "hidden items-center gap-1 rounded-full border border-border bg-muted/30 px-2 py-1 lg:flex",
+              "portfolio-nav-menu portfolio-nav-menu-desktop hidden items-center gap-1 rounded-full px-2 py-1 lg:flex",
               classNames?.desktopMenu,
             )}
             aria-label="Primary"
           >
-            {config.links.map((link) => (
-              <NavAnchor
-                key={`desktop-${link.href}`}
-                href={link.href}
-                label={link.label}
-                external={link.external}
-                download={link.download}
-                className={cn(baseLinkClasses, classNames?.link)}
-              />
-            ))}
+            <NavLinks
+              links={config.links}
+              itemClassName={cn(baseLinkClasses, classNames?.link)}
+              activeClassName="portfolio-nav-link-active"
+            />
           </nav>
 
-          <div className="flex items-center gap-2">
-            <ThemeSwitcher className="hidden md:block" />
+          <div className="portfolio-nav-actions flex items-center gap-2">
+            <ThemeSwitcher className="portfolio-nav-theme hidden md:block" />
             {config.cta ? (
               <NavAnchor
                 href={config.cta.href}

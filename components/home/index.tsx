@@ -3,6 +3,7 @@ import Image from "next/image";
 import { resumeHref } from "@/content/profile";
 import type { ContactData, ProfileData } from "@/types/portfolio";
 
+import AnimatedName from "./animated-name.client";
 import MotionDemo from "./motion-demo.client";
 
 type HomeSectionProps = {
@@ -20,8 +21,13 @@ export default function HomeSection({ profile, contact }: HomeSectionProps) {
             <span className="hero-pill">{profile.currentRolePeriod}</span>
           </div>
 
-          <h1 className="max-w-4xl text-3xl leading-[1.06] font-semibold tracking-tight sm:text-5xl">
-            {profile.name}
+          <h1 className="max-w-4xl leading-[1.06] font-semibold tracking-tight">
+            <AnimatedName
+              name={profile.name}
+              place="hero"
+              size="hero"
+              palette="neon"
+            />
             <span className="mt-2 block text-xl leading-tight font-medium text-muted-foreground sm:text-3xl">
               {profile.tagline}
             </span>

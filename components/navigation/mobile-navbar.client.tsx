@@ -8,6 +8,8 @@ import ThemeSwitcher from "@/components/theme/theme-switcher.client";
 import { cn } from "@/lib/utils";
 import type { NavbarClassNames, NavbarConfig } from "@/types/navigation";
 
+import NavLinks from "./nav-links.client";
+
 type MobileNavbarProps = {
   config: NavbarConfig;
   classNames?: NavbarClassNames;
@@ -50,6 +52,7 @@ export default function MobileNavbar({ config, classNames }: MobileNavbarProps) 
       <Button
         size="icon-sm"
         variant="outline"
+        className="portfolio-nav-toggle"
         aria-label={open ? "Close menu" : "Open menu"}
         aria-expanded={open}
         onClick={() => setOpen((value) => !value)}
@@ -68,7 +71,7 @@ export default function MobileNavbar({ config, classNames }: MobileNavbarProps) 
 
       <div
         className={cn(
-          "fixed inset-x-4 top-[4.7rem] z-50 rounded-2xl border border-border bg-card p-3 shadow-xl transition-all",
+          "portfolio-nav-mobile-panel fixed inset-x-4 top-[4.7rem] z-50 rounded-2xl border p-3 transition-all",
           open
             ? "translate-y-0 opacity-100"
             : "pointer-events-none -translate-y-2 opacity-0",
@@ -76,21 +79,20 @@ export default function MobileNavbar({ config, classNames }: MobileNavbarProps) 
         )}
       >
         <nav className="grid gap-1">
-          {config.links.map((link) => (
-            <NavAnchor
-              key={link.href}
-              href={link.href}
-              label={link.label}
-              external={link.external}
-              download={link.download}
-              onClick={() => setOpen(false)}
-              className="rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-            />
-          ))}
+          <NavLinks
+            links={config.links}
+            itemClassName="portfolio-nav-mobile-link rounded-lg px-3 py-2 text-sm font-medium transition-colors"
+            activeClassName="portfolio-nav-mobile-link-active"
+            onNavigate={() => setOpen(false)}
+          />
         </nav>
 
-        <div className="mt-3 border-t border-border pt-3">
-          <ThemeSwitcher fullWidth />
+        <div className="portfolio-nav-mobile-divider mt-3 border-t pt-3">
+          <ThemeSwitcher
+            fullWidth
+            className="portfolio-nav-theme"
+            onThemeSelect={() => setOpen(false)}
+          />
         </div>
 
         {config.cta ? (
@@ -102,7 +104,7 @@ export default function MobileNavbar({ config, classNames }: MobileNavbarProps) 
             onClick={() => setOpen(false)}
             className={cn(
               buttonVariants({ size: "sm" }),
-              "mt-3 w-full justify-center",
+              "portfolio-nav-cta mt-3 h-9 w-full justify-center rounded-xl text-[0.82rem] font-semibold",
             )}
           />
         ) : null}

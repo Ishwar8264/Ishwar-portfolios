@@ -30,6 +30,7 @@ import {
 type ThemeSwitcherProps = {
   className?: string;
   fullWidth?: boolean;
+  onThemeSelect?: (theme: AppTheme) => void;
 };
 
 const themeIcons: Record<AppTheme, LucideIcon> = {
@@ -48,6 +49,7 @@ const themeLabelByValue = Object.fromEntries(
 export default function ThemeSwitcher({
   className,
   fullWidth = false,
+  onThemeSelect,
 }: ThemeSwitcherProps) {
   const [open, setOpen] = useState(false);
   const theme = useThemeStore((state) => state.theme);
@@ -60,7 +62,7 @@ export default function ThemeSwitcher({
         <DropdownMenuTrigger
           className={cn(
             buttonVariants({ size: "sm", variant: "outline" }),
-            "h-9 rounded-full border-border bg-background/90 px-3 text-foreground shadow-sm",
+            "portfolio-nav-theme-trigger h-9 rounded-full px-3 text-foreground shadow-sm",
             fullWidth ? "w-full justify-between" : "justify-center",
           )}
           aria-label="Change theme"
@@ -78,16 +80,20 @@ export default function ThemeSwitcher({
         <DropdownMenuContent
           sideOffset={8}
           align={fullWidth ? "start" : "end"}
-          className={cn("min-w-0")}
+          className={cn("portfolio-nav-theme-content min-w-0")}
         >
           <DropdownMenuGroup>
-            <DropdownMenuLabel>Select Theme</DropdownMenuLabel>
+            <DropdownMenuLabel className="portfolio-nav-theme-label">
+              Select Theme
+            </DropdownMenuLabel>
           </DropdownMenuGroup>
-          <DropdownMenuSeparator />
+          <DropdownMenuSeparator className="portfolio-nav-theme-separator" />
           <DropdownMenuRadioGroup
             value={theme}
             onValueChange={(value) => {
-              setTheme(value as AppTheme);
+              const nextTheme = value as AppTheme;
+              setTheme(nextTheme);
+              onThemeSelect?.(nextTheme);
               setOpen(false);
             }}
           >
@@ -98,7 +104,7 @@ export default function ThemeSwitcher({
                 <DropdownMenuRadioItem
                   key={option.value}
                   value={option.value}
-                  className="py-1.5"
+                  className="portfolio-nav-theme-item py-1.5"
                 >
                   <span className="inline-flex items-center gap-2">
                     <OptionIcon className="size-3.5 text-muted-foreground" />
