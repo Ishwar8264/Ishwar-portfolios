@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "mkdir -p out/_next/static && rsync -a .next/static/ out/_next/static/",
     "start": "next start",
     "lint": "eslint"
   },
