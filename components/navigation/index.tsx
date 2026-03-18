@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { cn } from "@/lib/utils";
 import type { NavbarClassNames, NavbarConfig } from "@/types/navigation";
 import ThemeSwitcher from "@/components/theme/theme-switcher.client";
@@ -53,13 +55,22 @@ export default function Navbar({ config, classNames }: NavbarProps) {
           <a
             href={config.brand.href}
             className={cn(
-              "shrink-0 rounded-full border border-border px-3 py-1.5 text-sm font-semibold tracking-tight",
+              "shrink-0 rounded-full border border-border px-2.5 py-1.5 text-sm font-semibold tracking-tight",
               classNames?.brand,
             )}
           >
-            <span className="hidden sm:inline">{config.brand.name}</span>
-            <span className="sm:hidden">
-              {config.brand.shortName ?? config.brand.name}
+            <span className="flex items-center gap-2">
+              <Image
+                src="/images/profile/ishwar-logo.png"
+                alt="Ishwar logo"
+                width={24}
+                height={24}
+                className="size-6 rounded-md object-contain"
+              />
+              <span className="hidden sm:inline">{config.brand.name}</span>
+              <span className="sm:hidden">
+                {config.brand.shortName ?? config.brand.name}
+              </span>
             </span>
           </a>
 

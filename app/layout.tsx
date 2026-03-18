@@ -21,6 +21,13 @@ export const metadata: Metadata = {
   title: "Ishwar Sahani | Frontend Engineer",
   description:
     "Modern portfolio of Ishwar Sahani, frontend engineer focused on performant and scalable UI.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", type: "image/x-icon" },
+      { url: "/icon.png", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-icon.png" }],
+  },
 };
 
 export default function RootLayout({
