@@ -86,14 +86,17 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                   </ShimmerButton>
 
                   {project.repoUrl ? (
-                    <a
+                    <ShimmerButton
+                      as="a"
                       href={project.repoUrl}
                       target="_blank"
                       rel="noreferrer noopener"
-                      className="inline-flex h-9 items-center justify-center rounded-lg border border-border px-4 text-sm font-medium transition-colors hover:bg-muted"
+                      className="h-9 px-4 text-sm font-medium"
+                      background="linear-gradient(115deg, rgba(30,41,59,0.94), rgba(71,85,105,0.92))"
+                      shimmerColor="#cbd5e1"
                     >
                       Repo
-                    </a>
+                    </ShimmerButton>
                   ) : null}
                 </div>
               </article>

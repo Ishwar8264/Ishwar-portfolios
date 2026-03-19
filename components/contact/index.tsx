@@ -60,29 +60,38 @@ export default function ContactSection({ contact }: ContactSectionProps) {
               >
                 Email Me
               </ShimmerButton>
-              <a
+              <ShimmerButton
+                as="a"
                 href={contact.linkedin}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="inline-flex h-10 items-center justify-center rounded-lg border border-border px-4 text-sm font-medium transition-colors hover:bg-muted"
+                className="h-10 px-4 text-sm font-medium"
+                background="linear-gradient(115deg, rgba(15,23,42,0.92), rgba(51,65,85,0.92))"
+                shimmerColor="#cbd5e1"
               >
                 LinkedIn
-              </a>
-              <a
+              </ShimmerButton>
+              <ShimmerButton
+                as="a"
                 href={contact.github}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="inline-flex h-10 items-center justify-center rounded-lg border border-border px-4 text-sm font-medium transition-colors hover:bg-muted"
+                className="h-10 px-4 text-sm font-medium"
+                background="linear-gradient(115deg, rgba(15,23,42,0.92), rgba(31,41,55,0.92))"
+                shimmerColor="#94a3b8"
               >
                 GitHub
-              </a>
-              <a
+              </ShimmerButton>
+              <ShimmerButton
+                as="a"
                 href={resumeHref}
                 download
-                className="inline-flex h-10 items-center justify-center rounded-lg border border-border px-4 text-sm font-medium transition-colors hover:bg-muted"
+                className="h-10 px-4 text-sm font-medium"
+                background="linear-gradient(115deg, rgba(30,41,59,0.94), rgba(14,116,144,0.9))"
+                shimmerColor="#67e8f9"
               >
                 Download Resume
-              </a>
+              </ShimmerButton>
             </div>
           </MagicCard>
         </BlurFade>

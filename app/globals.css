@@ -819,19 +819,21 @@ section[id] {
   z-index: 1;
 }
 
-.hero-retro-grid {
-  inset: -6% 0 -18%;
-  opacity: 0.84;
+.hero-flickering-grid {
+  position: absolute;
+  inset: -4% 0 -14%;
+  opacity: 0.9;
   mask-image:
-    radial-gradient(circle at center, white 0%, white 56%, transparent 88%),
-    linear-gradient(180deg, white 0%, white 72%, transparent 100%);
+    radial-gradient(circle at center, white 0%, white 58%, transparent 88%),
+    linear-gradient(180deg, white 0%, white 76%, transparent 100%);
   -webkit-mask-image:
-    radial-gradient(circle at center, white 0%, white 56%, transparent 88%),
-    linear-gradient(180deg, white 0%, white 72%, transparent 100%);
+    radial-gradient(circle at center, white 0%, white 58%, transparent 88%),
+    linear-gradient(180deg, white 0%, white 76%, transparent 100%);
+  mix-blend-mode: screen;
 }
 
 .hero-light-rays {
-  opacity: 0.72;
+  opacity: 0.62;
   mix-blend-mode: screen;
 }
 

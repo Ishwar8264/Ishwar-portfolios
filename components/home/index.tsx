@@ -2,11 +2,11 @@ import Image from "next/image";
 
 import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
 import { BlurFade } from "@/components/ui/blur-fade";
+import { FlickeringGrid } from "@/components/ui/flickering-grid";
 import { Highlighter } from "@/components/ui/highlighter";
 import { LightRays } from "@/components/ui/light-rays";
 import { MagicCard } from "@/components/ui/magic-card";
 import { Marquee } from "@/components/ui/marquee";
-import { RetroGrid } from "@/components/ui/retro-grid";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { SparklesText } from "@/components/ui/sparkles-text";
 import { TypingAnimation } from "@/components/ui/typing-animation";
@@ -82,13 +82,13 @@ export default function HomeSection({ profile, contact }: HomeSectionProps) {
   return (
     <section id="home" className="hero-wrap">
       <div aria-hidden="true" className="hero-background">
-        <RetroGrid
-          className="hero-retro-grid"
-          angle={67}
-          cellSize={68}
-          opacity={0.45}
-          lightLineColor="rgba(59, 130, 246, 0.32)"
-          darkLineColor="rgba(125, 211, 252, 0.22)"
+        <FlickeringGrid
+          className="hero-flickering-grid"
+          squareSize={5}
+          gridGap={7}
+          flickerChance={0.22}
+          color="rgb(59, 130, 246)"
+          maxOpacity={0.26}
         />
         <LightRays
           className="hero-light-rays"
@@ -195,12 +195,25 @@ export default function HomeSection({ profile, contact }: HomeSectionProps) {
               >
                 View Projects
               </ShimmerButton>
-              <a className="hero-btn-secondary" href={resumeHref} download>
+              <ShimmerButton
+                as="a"
+                href={resumeHref}
+                download
+                className="h-10 px-4 text-sm font-semibold"
+                background="linear-gradient(115deg, rgba(15,23,42,0.92), rgba(71,85,105,0.92))"
+                shimmerColor="#cbd5e1"
+              >
                 Download Resume
-              </a>
-              <a className="hero-btn-secondary" href={`mailto:${contact.email}`}>
+              </ShimmerButton>
+              <ShimmerButton
+                as="a"
+                href={`mailto:${contact.email}`}
+                className="h-10 px-4 text-sm font-semibold"
+                background="linear-gradient(115deg, rgba(12,74,110,0.94), rgba(30,41,59,0.94))"
+                shimmerColor="#67e8f9"
+              >
                 Let&apos;s Connect
-              </a>
+              </ShimmerButton>
             </div>
           </BlurFade>
 
