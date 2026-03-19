@@ -118,8 +118,14 @@ export default function AnimatedName({
   );
 
   useEffect(() => {
-    setVisibleCount(shouldReduceMotion ? letters.length : 0);
-    setPhase("typing");
+    const resetTimer = setTimeout(() => {
+      setVisibleCount(shouldReduceMotion ? letters.length : 0);
+      setPhase("typing");
+    }, 0);
+
+    return () => {
+      clearTimeout(resetTimer);
+    };
   }, [letters.length, shouldReduceMotion]);
 
   useEffect(() => {
@@ -135,7 +141,9 @@ export default function AnimatedName({
           setVisibleCount((current) => current + 1);
         }, revealConfig.typeSpeedMs);
       } else {
-        setPhase("holdingTyped");
+        timer = setTimeout(() => {
+          setPhase("holdingTyped");
+        }, 0);
       }
     } else if (phase === "holdingTyped") {
       timer = setTimeout(() => {
@@ -147,7 +155,9 @@ export default function AnimatedName({
           setVisibleCount((current) => current - 1);
         }, revealConfig.deleteSpeedMs);
       } else {
-        setPhase("holdingEmpty");
+        timer = setTimeout(() => {
+          setPhase("holdingEmpty");
+        }, 0);
       }
     } else if (phase === "holdingEmpty") {
       timer = setTimeout(() => {
