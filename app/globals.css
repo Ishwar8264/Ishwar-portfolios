@@ -104,6 +104,14 @@
       background-position: calc(100% + var(--shiny-width)) 0;
     }
   }
+
+  --animate-gradient: gradient 8s linear infinite;
+
+  @keyframes gradient {
+    to {
+      background-position: var(--bg-size, 300%) 0;
+    }
+  }
 }
 
 :root,
@@ -703,6 +711,13 @@
   overflow: clip;
 }
 
+.hero-background {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
 section[id] {
   scroll-margin-top: 6.25rem;
 }
@@ -790,6 +805,23 @@ section[id] {
   z-index: 1;
 }
 
+.hero-grid-pattern {
+  inset: -18% -8% -24%;
+  width: 116%;
+  height: 142%;
+  color: color-mix(in oklch, var(--primary) 18%, transparent);
+  stroke: color-mix(in oklch, var(--border) 72%, var(--accent));
+  opacity: 0.82;
+  transform: skewY(-12deg);
+  mask-image: radial-gradient(circle at center, white, transparent 74%);
+  -webkit-mask-image: radial-gradient(circle at center, white, transparent 74%);
+}
+
+.hero-light-rays {
+  opacity: 0.84;
+  mix-blend-mode: screen;
+}
+
 .hero-pill {
   display: inline-flex;
   align-items: center;
@@ -802,6 +834,31 @@ section[id] {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--muted-foreground);
+  backdrop-filter: blur(14px);
+  box-shadow: inset 0 1px 0 color-mix(in oklch, var(--foreground) 5%, transparent);
+}
+
+.hero-pill-sparkles {
+  line-height: 1;
+}
+
+.hero-pill-sparkles strong {
+  font-weight: 600;
+}
+
+.hero-pill-sparkles svg {
+  opacity: 0.88;
+}
+
+.hero-name-glow {
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+
+.hero-tagline {
+  max-width: 38rem;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
 }
 
 .hero-metric-card {
@@ -870,8 +927,73 @@ section[id] {
   color: var(--muted-foreground);
 }
 
+.hero-marquee-shell {
+  position: relative;
+  align-self: flex-start;
+  width: 100%;
+  min-width: 0;
+  max-width: 42rem;
+  overflow: hidden;
+  border: 1px solid color-mix(in oklch, var(--border) 72%, var(--primary));
+  border-radius: 999px;
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in oklch, var(--card) 88%, transparent) 0%,
+      color-mix(in oklch, var(--background) 82%, var(--accent) 18%) 100%
+    );
+  box-shadow:
+    inset 0 1px 0 color-mix(in oklch, var(--foreground) 7%, transparent),
+    0 16px 34px color-mix(in oklch, var(--primary) 10%, transparent);
+  mask-image: linear-gradient(90deg, transparent, white 10%, white 90%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, white 10%, white 90%, transparent);
+}
+
+.hero-marquee {
+  width: 100%;
+  min-width: 0;
+  padding-block: 0.45rem;
+  padding-inline: 0.4rem;
+}
+
+.hero-marquee-track {
+  display: flex;
+  width: fit-content;
+  min-width: 0;
+  align-items: center;
+  gap: 0.75rem;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.hero-marquee-item {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  border-radius: 999px;
+  border: 1px solid color-mix(in oklch, var(--border) 68%, var(--accent));
+  background: color-mix(in oklch, var(--background) 84%, transparent);
+  padding: 0.45rem 0.9rem;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: color-mix(in oklch, var(--foreground) 90%, var(--muted-foreground));
+  backdrop-filter: blur(14px);
+  box-shadow:
+    inset 0 1px 0 color-mix(in oklch, var(--foreground) 6%, transparent),
+    0 10px 18px color-mix(in oklch, var(--primary) 8%, transparent);
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
 .hero-image-shell {
   background-image:
+    linear-gradient(
+      180deg,
+      color-mix(in oklch, var(--background) 6%, transparent) 0%,
+      transparent 34%
+    ),
     linear-gradient(
       125deg,
       color-mix(in oklch, var(--accent) 18%, transparent) 0%,
@@ -882,6 +1004,13 @@ section[id] {
       color-mix(in oklch, var(--primary) 22%, transparent) 0%,
       transparent 50%
     );
+  box-shadow: inset 0 1px 0 color-mix(in oklch, var(--foreground) 8%, transparent);
+}
+
+.hero-image-card-shell {
+  box-shadow:
+    0 34px 70px color-mix(in oklch, var(--primary) 14%, transparent),
+    0 18px 42px color-mix(in oklch, var(--foreground) 8%, transparent);
 }
 
 .hero-image-shell::before {
@@ -907,13 +1036,87 @@ section[id] {
   z-index: 1;
 }
 
+.hero-image-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-image-rays {
+  opacity: 0.72;
+  mix-blend-mode: screen;
+  mask-image: linear-gradient(180deg, white 0%, white 58%, transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, white 0%, white 58%, transparent 100%);
+}
+
+.hero-image-photo {
+  z-index: 1;
+}
+
+.hero-image-vignette {
+  position: absolute;
+  inset: 0.5rem;
+  z-index: 1;
+  border-radius: 1rem;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in oklch, var(--background) 10%, transparent) 0%,
+      transparent 24%,
+      transparent 72%,
+      color-mix(in oklch, var(--foreground) 18%, transparent) 100%
+    ),
+    radial-gradient(
+      circle at 82% 12%,
+      color-mix(in oklch, var(--accent) 16%, transparent) 0%,
+      transparent 42%
+    );
+}
+
 .hero-floating-card {
   position: absolute;
   border-radius: 0.9rem;
-  border: 1px solid color-mix(in oklch, var(--border) 85%, transparent);
-  background: color-mix(in oklch, var(--background) 82%, transparent);
-  backdrop-filter: blur(12px);
+  z-index: 2;
+  border: 1px solid color-mix(in oklch, var(--border) 68%, var(--primary));
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in oklch, var(--background) 88%, transparent) 0%,
+      color-mix(in oklch, var(--card) 74%, var(--primary) 26%) 100%
+    );
+  backdrop-filter: blur(16px);
+  box-shadow:
+    0 18px 30px color-mix(in oklch, var(--primary) 12%, transparent),
+    inset 0 1px 0 color-mix(in oklch, var(--foreground) 8%, transparent);
   padding: 0.55rem 0.7rem;
+}
+
+.hero-floating-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(
+    135deg,
+    color-mix(in oklch, var(--primary) 12%, transparent) 0%,
+    transparent 62%
+  );
+}
+
+.hero-floating-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-floating-card-top {
+  min-width: 10.5rem;
+}
+
+.hero-floating-card-bottom {
+  padding-right: 0.8rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -923,6 +1126,14 @@ section[id] {
 
   .animated-name-cursor {
     animation: none;
+  }
+
+  .hero-light-rays {
+    display: none;
+  }
+
+  .hero-image-rays {
+    display: none;
   }
 
   .portfolio-nav-shell::before {
