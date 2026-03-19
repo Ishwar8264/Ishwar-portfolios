@@ -5,6 +5,7 @@ import { AnimatedGridPattern } from "@/components/ui/animated-grid-pattern";
 import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { BorderBeam } from "@/components/ui/border-beam";
+import { Highlighter } from "@/components/ui/highlighter";
 import { LightRays } from "@/components/ui/light-rays";
 import { MagicCard } from "@/components/ui/magic-card";
 import { Marquee } from "@/components/ui/marquee";
@@ -27,6 +28,57 @@ export default function HomeSection({ profile, contact }: HomeSectionProps) {
     { label: "Current Product", value: profile.currentProduct, from: "#0ea5e9", to: "#2563eb" },
     { label: "Location", value: profile.location, from: "#8b5cf6", to: "#22c55e" },
   ] as const;
+  const summaryHighlights = [
+    {
+      text: "Klakar",
+      color: "rgba(96, 165, 250, 0.28)",
+    },
+    {
+      text: "Next.js App Router",
+      color: "rgba(125, 211, 252, 0.28)",
+    },
+    {
+      text: "React ecosystem and Zustand",
+      color: "rgba(244, 114, 182, 0.24)",
+    },
+    {
+      text: "server-side and client-side API integration",
+      color: "rgba(74, 222, 128, 0.24)",
+    },
+    {
+      text: "Postman and Swagger",
+      color: "rgba(251, 191, 36, 0.28)",
+    },
+    {
+      text: "PostgreSQL/SQL basics plus MongoDB with Prisma and Mongoose",
+      color: "rgba(192, 132, 252, 0.24)",
+    },
+  ] as const;
+
+  const summarySegments = (() => {
+    let remaining = profile.summary;
+    const segments: Array<string | (typeof summaryHighlights)[number]> = [];
+
+    for (const highlight of summaryHighlights) {
+      const matchIndex = remaining.indexOf(highlight.text);
+      if (matchIndex === -1) {
+        continue;
+      }
+
+      if (matchIndex > 0) {
+        segments.push(remaining.slice(0, matchIndex));
+      }
+
+      segments.push(highlight);
+      remaining = remaining.slice(matchIndex + highlight.text.length);
+    }
+
+    if (remaining.length > 0) {
+      segments.push(remaining);
+    }
+
+    return segments.length > 0 ? segments : [profile.summary];
+  })();
 
   return (
     <section id="home" className="hero-wrap">
@@ -95,8 +147,23 @@ export default function HomeSection({ profile, contact }: HomeSectionProps) {
           </BlurFade>
 
           <BlurFade inView delay={0.12}>
-            <p className="max-w-3xl text-sm text-muted-foreground sm:text-base">
-              {profile.summary}
+            <p className="max-w-3xl text-sm leading-7 text-muted-foreground sm:text-base">
+              {summarySegments.map((segment, index) =>
+                typeof segment === "string" ? (
+                  <span key={`summary-text-${index}`}>{segment}</span>
+                ) : (
+                  <Highlighter
+                    key={`${segment.text}-${index}`}
+                    color={segment.color}
+                    animationDuration={900}
+                    iterations={1}
+                    padding={1}
+                    isView
+                  >
+                    {segment.text}
+                  </Highlighter>
+                ),
+              )}
             </p>
           </BlurFade>
 
