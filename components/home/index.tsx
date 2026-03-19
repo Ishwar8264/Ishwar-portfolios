@@ -1,16 +1,15 @@
 import Image from "next/image";
 
-import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
-import { AnimatedGridPattern } from "@/components/ui/animated-grid-pattern";
 import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
 import { BlurFade } from "@/components/ui/blur-fade";
-import { BorderBeam } from "@/components/ui/border-beam";
 import { Highlighter } from "@/components/ui/highlighter";
 import { LightRays } from "@/components/ui/light-rays";
 import { MagicCard } from "@/components/ui/magic-card";
 import { Marquee } from "@/components/ui/marquee";
+import { RetroGrid } from "@/components/ui/retro-grid";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { SparklesText } from "@/components/ui/sparkles-text";
+import { TypingAnimation } from "@/components/ui/typing-animation";
 import { resumeHref } from "@/content/profile";
 import type { ContactData, ProfileData } from "@/types/portfolio";
 
@@ -83,14 +82,13 @@ export default function HomeSection({ profile, contact }: HomeSectionProps) {
   return (
     <section id="home" className="hero-wrap">
       <div aria-hidden="true" className="hero-background">
-        <AnimatedGridPattern
-          className="hero-grid-pattern"
-          width={72}
-          height={72}
-          numSquares={36}
-          maxOpacity={0.14}
-          duration={5.2}
-          repeatDelay={0.9}
+        <RetroGrid
+          className="hero-retro-grid"
+          angle={67}
+          cellSize={68}
+          opacity={0.45}
+          lightLineColor="rgba(59, 130, 246, 0.32)"
+          darkLineColor="rgba(125, 211, 252, 0.22)"
         />
         <LightRays
           className="hero-light-rays"
@@ -135,14 +133,15 @@ export default function HomeSection({ profile, contact }: HomeSectionProps) {
                   />
                 </span>
               </h1>
-              <AnimatedGradientText
-                speed={1.5}
-                colorFrom="#60a5fa"
-                colorTo="#f472b6"
-                className="hero-tagline mt-3 block text-xl leading-tight font-medium sm:text-3xl"
+              <TypingAnimation
+                as="p"
+                duration={52}
+                delay={220}
+                startOnView={false}
+                className="hero-tagline mt-3 block text-xl leading-tight font-medium text-muted-foreground sm:text-3xl"
               >
                 {profile.tagline}
-              </AnimatedGradientText>
+              </TypingAnimation>
             </div>
           </BlurFade>
 
@@ -247,14 +246,6 @@ export default function HomeSection({ profile, contact }: HomeSectionProps) {
             glowOpacity={0.18}
           >
             <div className="hero-image-shell relative w-full overflow-hidden rounded-[calc(1.85rem-1px)] border border-border/70 p-2">
-              <BorderBeam
-                size={90}
-                duration={7}
-                delay={0.6}
-                borderWidth={1.5}
-                colorFrom="#60a5fa"
-                colorTo="#f472b6"
-              />
               <div aria-hidden="true" className="hero-image-backdrop">
                 <LightRays
                   className="hero-image-rays"
