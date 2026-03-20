@@ -4,7 +4,6 @@ import { StripedPattern } from "@/components/magicui/striped-pattern";
 import AnimatedName from "@/components/home/animated-name.client";
 import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
 import { BlurFade } from "@/components/ui/blur-fade";
-import { BorderBeam } from "@/components/ui/border-beam";
 import InfoCard, {
   type InfoCardColors,
   type InfoCardPalette,
@@ -77,14 +76,6 @@ export default function AboutSection({ profile, cards }: AboutSectionProps) {
             glowBlur={56}
             className="relative overflow-hidden rounded-3xl border border-border/70 bg-card/70 p-2 shadow-sm"
           >
-            <BorderBeam
-              size={82}
-              duration={7.2}
-              delay={0.1}
-              borderWidth={1.5}
-              colorFrom="#fb7185"
-              colorTo="#0ea5e9"
-            />
             <Image
               src="/images/profile/img-1.jpeg"
               alt={`${profile.name} portrait`}
