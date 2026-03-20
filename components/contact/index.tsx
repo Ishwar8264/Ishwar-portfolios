@@ -54,11 +54,12 @@ export default function ContactSection({ contact }: ContactSectionProps) {
                   href={contact.linkedin}
                   target="_blank"
                   rel="noreferrer noopener"
+                  aria-label="Open Ishwar Sahani LinkedIn profile"
                   className="h-10 px-4 text-sm font-medium"
                   background="linear-gradient(115deg, rgba(15,23,42,0.92), rgba(51,65,85,0.92))"
                   shimmerColor="#cbd5e1"
                 >
-                  LinkedIn
+                  Ishwar Sahani LinkedIn
                 </ShimmerButton>
                 <ShimmerButton
                   as="a"
@@ -95,6 +96,19 @@ export default function ContactSection({ contact }: ContactSectionProps) {
                 Direct Reach
               </p>
               <div className="mt-4 space-y-4">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.12em] text-muted-foreground">
+                    LinkedIn
+                  </p>
+                  <a
+                    href={contact.linkedin}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="mt-1 block text-sm font-medium hover:underline"
+                  >
+                    Ishwar Sahani on LinkedIn
+                  </a>
+                </div>
                 <div>
                   <p className="text-xs uppercase tracking-[0.12em] text-muted-foreground">
                     Email
