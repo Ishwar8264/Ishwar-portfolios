@@ -1,6 +1,6 @@
 import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
 import { BlurFade } from "@/components/ui/blur-fade";
-import { MagicCard } from "@/components/ui/magic-card";
+import ModernGlowCard from "@/components/ui/modern-glow-card.client";
 import SectionBackground from "@/components/ui/section-background.client";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
 import type { ContactData } from "@/types/portfolio";
@@ -20,12 +20,11 @@ export default function ContactSection({ contact }: ContactSectionProps) {
       <div className="relative z-10 mx-auto w-[min(1200px,95%)]">
         <div className="grid gap-4 lg:grid-cols-[1.2fr_1fr]">
           <BlurFade inView delay={0.05}>
-            <MagicCard
-              mode="orb"
-              glowFrom="#22d3ee"
-              glowTo="#a855f7"
-              glowOpacity={0.24}
-              className="relative rounded-3xl border border-border/75 bg-card/70 p-6"
+            <ModernGlowCard
+              className="relative p-6"
+              accentFrom="#22d3ee"
+              accentTo="#a855f7"
+              glowSize={260}
             >
               <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
                 <AnimatedShinyText className="text-xs uppercase tracking-[0.2em]">
@@ -83,15 +82,14 @@ export default function ContactSection({ contact }: ContactSectionProps) {
                   Download Resume
                 </ShimmerButton>
               </div>
-            </MagicCard>
+            </ModernGlowCard>
           </BlurFade>
 
           <BlurFade inView delay={0.12}>
-            <MagicCard
-              className="rounded-3xl border border-border/75 bg-card/70 p-6"
-              gradientFrom="#34d399"
-              gradientTo="#3b82f6"
-              gradientOpacity={0.16}
+            <ModernGlowCard
+              className="p-6"
+              accentFrom="#34d399"
+              accentTo="#3b82f6"
             >
               <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
                 Direct Reach
@@ -120,7 +118,7 @@ export default function ContactSection({ contact }: ContactSectionProps) {
                   </a>
                 </div>
               </div>
-            </MagicCard>
+            </ModernGlowCard>
           </BlurFade>
         </div>
       </div>

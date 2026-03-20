@@ -1,6 +1,6 @@
 import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
 import { BlurFade } from "@/components/ui/blur-fade";
-import { MagicCard } from "@/components/ui/magic-card";
+import ModernGlowCard from "@/components/ui/modern-glow-card.client";
 import SectionBackground from "@/components/ui/section-background.client";
 import type { ExperienceData } from "@/types/portfolio";
 
@@ -37,12 +37,10 @@ export default function ExperienceSection({
               inView
               delay={0.08 + index * 0.06}
             >
-              <MagicCard
-                className="rounded-3xl border border-border/75 bg-card/65 p-5 sm:p-6"
-                gradientFrom={index % 2 === 0 ? "#22d3ee" : "#fb7185"}
-                gradientTo={index % 2 === 0 ? "#3b82f6" : "#f59e0b"}
-                gradientOpacity={0.18}
-                gradientSize={220}
+              <ModernGlowCard
+                className="p-5 sm:p-6"
+                accentFrom={index % 2 === 0 ? "#22d3ee" : "#fb7185"}
+                accentTo={index % 2 === 0 ? "#3b82f6" : "#f59e0b"}
               >
                 <article>
                   <div className="flex flex-wrap items-start justify-between gap-2">
@@ -97,7 +95,7 @@ export default function ExperienceSection({
                     ))}
                   </ul>
                 </article>
-              </MagicCard>
+              </ModernGlowCard>
             </BlurFade>
           ))}
         </div>
