@@ -1,6 +1,8 @@
+import Image from "next/image";
+
 import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
 import { BlurFade } from "@/components/ui/blur-fade";
-import { MagicCard } from "@/components/ui/magic-card";
+import ModernGlowCard from "@/components/ui/modern-glow-card.client";
 import SectionBackground from "@/components/ui/section-background.client";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
 import type { ProjectData } from "@/types/portfolio";
@@ -32,13 +34,31 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
         <div className="grid gap-4 md:grid-cols-2">
           {projects.map((project, index) => (
             <BlurFade key={project.title} inView delay={0.08 + index * 0.05}>
-              <MagicCard
-                gradientFrom={index % 2 === 0 ? "#38bdf8" : "#fb7185"}
-                gradientTo={index % 2 === 0 ? "#6366f1" : "#f59e0b"}
-                gradientOpacity={0.18}
-                className="relative rounded-3xl border border-border/75 bg-card/70 p-5"
+              <ModernGlowCard
+                accentFrom={index % 2 === 0 ? "#38bdf8" : "#fb7185"}
+                accentTo={index % 2 === 0 ? "#6366f1" : "#f59e0b"}
+                className="relative p-5"
               >
                 <article>
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="group/image block"
+                    aria-label={`Open ${project.title} live demo`}
+                  >
+                    <div className="relative mb-4 overflow-hidden rounded-2xl border border-border/70 bg-background/80">
+                      <Image
+                        src={project.imageSrc}
+                        alt={project.imageAlt}
+                        width={1440}
+                        height={900}
+                        className="h-44 w-full object-cover object-top transition-transform duration-500 group-hover/image:scale-[1.03]"
+                      />
+                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
+                    </div>
+                  </a>
+
                   <div className="flex items-start justify-between gap-3">
                     <h3 className="text-lg font-semibold">{project.title}</h3>
                     <span className="rounded-full border border-border/70 bg-background/72 px-2.5 py-1 text-[10px] uppercase tracking-[0.12em] text-muted-foreground">
@@ -89,7 +109,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                     ) : null}
                   </div>
                 </article>
-              </MagicCard>
+              </ModernGlowCard>
             </BlurFade>
           ))}
         </div>

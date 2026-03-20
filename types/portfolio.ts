@@ -28,6 +28,8 @@ export type ProjectData = {
   description: string;
   stack: string[];
   liveUrl: string;
+  imageSrc: string;
+  imageAlt: string;
   repoUrl?: string;
   status: string;
 };
