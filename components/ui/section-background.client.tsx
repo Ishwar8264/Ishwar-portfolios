@@ -172,11 +172,11 @@ export default function SectionBackground({
               "[mask-image:radial-gradient(circle_at_center,white,transparent_86%)]",
             )}
           >
-            {[0, 1, 2].map((index) => (
+            {[0, 1].map((index) => (
               <m.div
                 key={`ripple-${index}`}
                 className={cn(
-                  "absolute top-1/2 left-1/2 h-[19rem] w-[19rem] -translate-x-1/2 -translate-y-1/2 rounded-full border",
+                  "absolute top-1/2 left-1/2 h-[16rem] w-[16rem] -translate-x-1/2 -translate-y-1/2 rounded-full border",
                   colors.ripple,
                 )}
                 initial={
@@ -193,9 +193,9 @@ export default function SectionBackground({
                   shouldReduceMotion
                     ? undefined
                     : {
-                        duration: 5.8,
+                        duration: 6.4,
                         repeat: Number.POSITIVE_INFINITY,
-                        delay: index * 1.2,
+                        delay: index * 1.4,
                         ease: "easeOut",
                       }
                 }

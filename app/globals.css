@@ -1134,6 +1134,34 @@ section[id] {
   padding-right: 0.8rem;
 }
 
+@media (max-width: 900px) {
+  .portfolio-nav-shell,
+  .hero-pill,
+  .hero-marquee-item,
+  .hero-floating-card,
+  .motion-demo-card {
+    backdrop-filter: none;
+  }
+
+  .hero-wrap::before,
+  .hero-wrap::after,
+  .hero-grid::before,
+  .hero-image-shell::before {
+    display: none;
+  }
+
+  .hero-light-rays,
+  .hero-image-rays {
+    display: none;
+  }
+
+  .portfolio-nav-shell::before {
+    animation: none;
+    filter: none;
+    opacity: 0.35;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .motion-demo-orb {
     animation: none;

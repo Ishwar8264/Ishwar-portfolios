@@ -45,6 +45,7 @@ export default function NavLinks({
     }
 
     const hrefSet = new Set(hashLinks.map((link) => link.href));
+    const inViewDistances = new Map<string, number>();
 
     const getSections = (): SectionEntry[] =>
       hashLinks
@@ -53,32 +54,47 @@ export default function NavLinks({
           element: document.getElementById(link.href.slice(1)),
         }))
         .filter((entry): entry is SectionEntry => entry.element !== null);
+    const sections = getSections();
+    if (!sections.length) {
+      return;
+    }
 
-    const getActiveByScroll = () => {
-      const sections = getSections();
-      if (!sections.length) {
-        return defaultActiveHref;
+    const getTriggerLine = () => window.innerHeight * 0.45;
+
+    const syncClosestInView = () => {
+      if (!inViewDistances.size) {
+        setActiveHref((prev) => (prev === defaultActiveHref ? prev : defaultActiveHref));
+        return;
       }
 
-      const triggerLine = window.innerHeight * 0.45;
-      let currentHref = sections[0].href;
+      let nextHref = defaultActiveHref;
+      let minDistance = Number.POSITIVE_INFINITY;
 
-      for (const section of sections) {
-        const top = section.element.getBoundingClientRect().top;
-        if (top <= triggerLine) {
-          currentHref = section.href;
-          continue;
+      for (const [href, distance] of inViewDistances.entries()) {
+        if (distance < minDistance) {
+          minDistance = distance;
+          nextHref = href;
         }
-
-        break;
       }
 
-      return currentHref;
+      setActiveHref((prev) => (prev === nextHref ? prev : nextHref));
     };
 
-    const syncActiveState = () => {
-      const next = getActiveByScroll();
-      setActiveHref((prev) => (prev === next ? prev : next));
+    const syncByViewport = () => {
+      const triggerLine = getTriggerLine();
+
+      for (const section of sections) {
+        const rect = section.element.getBoundingClientRect();
+        const isCrossingTriggerLine = rect.top <= triggerLine && rect.bottom >= triggerLine;
+
+        if (isCrossingTriggerLine) {
+          inViewDistances.set(section.href, Math.abs(rect.top - triggerLine));
+        } else {
+          inViewDistances.delete(section.href);
+        }
+      }
+
+      syncClosestInView();
     };
 
     const syncHashState = () => {
@@ -86,20 +102,51 @@ export default function NavLinks({
       if (currentHash && hrefSet.has(currentHash)) {
         setActiveHref((prev) => (prev === currentHash ? prev : currentHash));
       } else {
-        syncActiveState();
+        syncByViewport();
       }
     };
 
-    syncActiveState();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const triggerLine = getTriggerLine();
 
+        for (const entry of entries) {
+          const target = entry.target as HTMLElement;
+          const href = normalizeHash(target.id);
+          if (!hrefSet.has(href)) {
+            continue;
+          }
+
+          if (entry.isIntersecting) {
+            inViewDistances.set(
+              href,
+              Math.abs(entry.boundingClientRect.top - triggerLine),
+            );
+          } else {
+            inViewDistances.delete(href);
+          }
+        }
+
+        syncClosestInView();
+      },
+      {
+        root: null,
+        rootMargin: "-45% 0px -45% 0px",
+        threshold: [0, 0.25, 0.5, 0.75, 1],
+      },
+    );
+
+    sections.forEach((section) => observer.observe(section.element));
+
+    syncByViewport();
     window.addEventListener("hashchange", syncHashState);
-    window.addEventListener("scroll", syncActiveState, { passive: true });
-    window.addEventListener("resize", syncActiveState);
+    window.addEventListener("resize", syncByViewport);
 
     return () => {
+      observer.disconnect();
+      inViewDistances.clear();
       window.removeEventListener("hashchange", syncHashState);
-      window.removeEventListener("scroll", syncActiveState);
-      window.removeEventListener("resize", syncActiveState);
+      window.removeEventListener("resize", syncByViewport);
     };
   }, [defaultActiveHref, hashLinks]);
 

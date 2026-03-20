@@ -277,6 +277,7 @@ export default function HomeSection({ profile, contact }: HomeSectionProps) {
                 width={960}
                 height={1200}
                 priority
+                sizes="(max-width: 1024px) 92vw, 42vw"
                 className="hero-image-photo h-[min(54svh,520px)] w-full rounded-2xl object-cover object-center lg:h-[min(64svh,540px)]"
               />
               <div aria-hidden="true" className="hero-image-vignette" />

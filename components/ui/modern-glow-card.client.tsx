@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   motion,
   useMotionTemplate,
@@ -52,6 +52,8 @@ export default function ModernGlowCard({
   hoverScale = 1.008,
 }: ModernGlowCardProps) {
   const shouldReduceMotion = useReducedMotion();
+  const [canHover, setCanHover] = useState(false);
+  const shouldTrackPointer = !shouldReduceMotion && canHover;
   const pointerX = useMotionValue(-999);
   const pointerY = useMotionValue(-999);
   const rotateX = useSpring(0, { stiffness: 240, damping: 24, mass: 0.65 });
@@ -59,6 +61,19 @@ export default function ModernGlowCard({
   const glowOpacity = useSpring(0, { stiffness: 260, damping: 30, mass: 0.7 });
   const accentFromSoft = hexToRgba(accentFrom, 0.28);
   const accentToSoft = hexToRgba(accentTo, 0.24);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const syncCanHover = () => {
+      setCanHover(mediaQuery.matches);
+    };
+
+    syncCanHover();
+    mediaQuery.addEventListener("change", syncCanHover);
+    return () => {
+      mediaQuery.removeEventListener("change", syncCanHover);
+    };
+  }, []);
 
   const reset = useCallback(() => {
     rotateX.set(0);
@@ -106,19 +121,19 @@ export default function ModernGlowCard({
         "shadow-[0_10px_30px_-18px_color-mix(in_oklch,var(--foreground)_35%,transparent)]",
         className,
       )}
-      onPointerEnter={shouldReduceMotion ? undefined : () => glowOpacity.set(0.24)}
-      onPointerMove={shouldReduceMotion ? undefined : onPointerMove}
-      onPointerLeave={shouldReduceMotion ? undefined : reset}
-      whileHover={shouldReduceMotion ? undefined : { scale: hoverScale }}
+      onPointerEnter={shouldTrackPointer ? () => glowOpacity.set(0.24) : undefined}
+      onPointerMove={shouldTrackPointer ? onPointerMove : undefined}
+      onPointerLeave={shouldTrackPointer ? reset : undefined}
+      whileHover={shouldTrackPointer ? { scale: hoverScale } : undefined}
       transition={{ duration: 0.22, ease: "easeOut" }}
       style={
-        shouldReduceMotion
-          ? undefined
-          : {
+        shouldTrackPointer
+          ? {
               rotateX,
               rotateY,
               transformPerspective: 1100,
             }
+          : undefined
       }
     >
       <div
@@ -130,7 +145,7 @@ export default function ModernGlowCard({
         aria-hidden
         className="pointer-events-none absolute -inset-px rounded-[inherit]"
         style={{
-          opacity: glowOpacity,
+          opacity: shouldTrackPointer ? glowOpacity : 0,
           background: borderGlowBackground,
         }}
       />
@@ -139,7 +154,7 @@ export default function ModernGlowCard({
         aria-hidden
         className="pointer-events-none absolute inset-0 rounded-[inherit]"
         style={{
-          opacity: glowOpacity,
+          opacity: shouldTrackPointer ? glowOpacity : 0,
           background: glowBackground,
         }}
       />

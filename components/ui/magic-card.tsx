@@ -5,6 +5,7 @@ import {
   motion,
   useMotionTemplate,
   useMotionValue,
+  useReducedMotion,
   useSpring,
 } from "motion/react"
 import { useTheme } from "next-themes"
@@ -72,10 +73,27 @@ export function MagicCard(props: MagicCardProps) {
   const glowSize = isOrbMode(props) ? (props.glowSize ?? 420) : 420
   const glowBlur = isOrbMode(props) ? (props.glowBlur ?? 60) : 60
   const glowOpacity = isOrbMode(props) ? (props.glowOpacity ?? 0.9) : 0.9
+  const shouldReduceMotion = useReducedMotion()
   const { theme, systemTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
+  const [canHover, setCanHover] = useState(false)
 
   useEffect(() => setMounted(true), [])
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(hover: hover) and (pointer: fine)")
+    const syncCanHover = () => {
+      setCanHover(mediaQuery.matches)
+    }
+
+    syncCanHover()
+    mediaQuery.addEventListener("change", syncCanHover)
+    return () => {
+      mediaQuery.removeEventListener("change", syncCanHover)
+    }
+  }, [])
+
+  const canUsePointerEffects = canHover && !shouldReduceMotion
 
   const isDarkTheme = useMemo(() => {
     if (!mounted) return true
@@ -93,6 +111,21 @@ export function MagicCard(props: MagicCardProps) {
   const modeRef = useRef(mode)
   const glowOpacityRef = useRef(glowOpacity)
   const gradientSizeRef = useRef(gradientSize)
+  const dynamicBorderBackground = useMotionTemplate`
+    linear-gradient(var(--color-background) 0 0) padding-box,
+    radial-gradient(${gradientSize}px circle at ${mouseX}px ${mouseY}px,
+      ${gradientFrom},
+      ${gradientTo},
+      var(--color-border) 100%
+    ) border-box
+  `
+  const dynamicOverlayBackground = useMotionTemplate`
+    radial-gradient(${gradientSize}px circle at ${mouseX}px ${mouseY}px,
+      ${gradientColor},
+      transparent 100%
+    )
+  `
+  const staticBorderBackground = `linear-gradient(var(--color-background) 0 0) padding-box, linear-gradient(135deg, ${gradientFrom}, ${gradientTo}) border-box`
 
   useEffect(() => {
     modeRef.current = mode
@@ -134,9 +167,14 @@ export function MagicCard(props: MagicCardProps) {
 
   useEffect(() => {
     reset("init")
-  }, [reset])
+  }, [canUsePointerEffects, reset])
 
   useEffect(() => {
+    if (!canUsePointerEffects) {
+      reset("global")
+      return
+    }
+
     const handleGlobalPointerOut = (e: PointerEvent) => {
       if (!e.relatedTarget) reset("global")
     }
@@ -154,7 +192,7 @@ export function MagicCard(props: MagicCardProps) {
       window.removeEventListener("blur", handleBlur)
       document.removeEventListener("visibilitychange", handleVisibility)
     }
-  }, [reset])
+  }, [canUsePointerEffects, reset])
 
   return (
     <motion.div
@@ -162,18 +200,17 @@ export function MagicCard(props: MagicCardProps) {
         "group relative isolate overflow-hidden rounded-[inherit] border border-transparent",
         className
       )}
-      onPointerMove={handlePointerMove}
-      onPointerLeave={() => reset("leave")}
-      onPointerEnter={() => reset("enter")}
+      onPointerMove={canUsePointerEffects ? handlePointerMove : undefined}
+      onPointerLeave={
+        canUsePointerEffects ? () => reset("leave") : undefined
+      }
+      onPointerEnter={
+        canUsePointerEffects ? () => reset("enter") : undefined
+      }
       style={{
-        background: useMotionTemplate`
-          linear-gradient(var(--color-background) 0 0) padding-box,
-          radial-gradient(${gradientSize}px circle at ${mouseX}px ${mouseY}px,
-            ${gradientFrom},
-            ${gradientTo},
-            var(--color-border) 100%
-          ) border-box
-        `,
+        background: canUsePointerEffects
+          ? dynamicBorderBackground
+          : staticBorderBackground,
       }}
     >
       <div className="bg-background absolute inset-px z-20 rounded-[inherit]" />
@@ -183,12 +220,9 @@ export function MagicCard(props: MagicCardProps) {
           suppressHydrationWarning
           className="pointer-events-none absolute inset-px z-30 rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
           style={{
-            background: useMotionTemplate`
-              radial-gradient(${gradientSize}px circle at ${mouseX}px ${mouseY}px,
-                ${gradientColor},
-                transparent 100%
-              )
-            `,
+            background: canUsePointerEffects
+              ? dynamicOverlayBackground
+              : "none",
             opacity: gradientOpacity,
           }}
         />

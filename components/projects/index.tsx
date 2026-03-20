@@ -53,6 +53,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                         alt={project.imageAlt}
                         width={1440}
                         height={900}
+                        sizes="(max-width: 768px) 92vw, (max-width: 1200px) 45vw, 520px"
                         className="h-44 w-full object-cover object-top transition-transform duration-500 group-hover/image:scale-[1.03]"
                       />
                       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
