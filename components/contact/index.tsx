@@ -16,7 +16,7 @@ export default function ContactSection({ contact }: ContactSectionProps) {
       id="contact"
       className="relative isolate overflow-hidden border-t border-border py-20"
     >
-      <SectionBackground tone="cyan" pattern="interactive" />
+      <SectionBackground tone="cyan" pattern="dot" />
       <div className="relative z-10 mx-auto w-[min(1200px,95%)]">
         <div className="grid gap-4 lg:grid-cols-[1.2fr_1fr]">
           <BlurFade inView delay={0.05}>

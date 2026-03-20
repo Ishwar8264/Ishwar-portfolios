@@ -2,7 +2,7 @@
 
 import { useLayoutEffect, useRef } from "react"
 import type React from "react"
-import { useInView } from "motion/react"
+import { useInView, useReducedMotion } from "motion/react"
 import { annotate } from "rough-notation"
 import { type RoughAnnotation } from "rough-notation/lib/model"
 
@@ -39,6 +39,7 @@ export function Highlighter({
   isView = false,
 }: HighlighterProps) {
   const elementRef = useRef<HTMLSpanElement>(null)
+  const shouldReduceMotion = useReducedMotion()
 
   const isInView = useInView(elementRef, {
     once: true,
@@ -52,8 +53,10 @@ export function Highlighter({
     const element = elementRef.current
     let annotation: RoughAnnotation | null = null
     let resizeObserver: ResizeObserver | null = null
+    let rafId: number | null = null
+    let handleResize: (() => void) | null = null
 
-    if (shouldShow && element) {
+    if (!shouldReduceMotion && shouldShow && element) {
       const annotationConfig = {
         type: action,
         color,
@@ -68,17 +71,34 @@ export function Highlighter({
       annotation = currentAnnotation
       currentAnnotation.show()
 
-      resizeObserver = new ResizeObserver(() => {
+      const redraw = () => {
         currentAnnotation.hide()
         currentAnnotation.show()
+      }
+
+      handleResize = () => {
+        if (rafId !== null) {
+          window.cancelAnimationFrame(rafId)
+        }
+        rafId = window.requestAnimationFrame(redraw)
+      }
+
+      resizeObserver = new ResizeObserver(() => {
+        handleResize?.()
       })
 
       resizeObserver.observe(element)
-      resizeObserver.observe(document.body)
+      window.addEventListener("resize", handleResize, { passive: true })
     }
 
     return () => {
       annotation?.remove()
+      if (rafId !== null) {
+        window.cancelAnimationFrame(rafId)
+      }
+      if (handleResize) {
+        window.removeEventListener("resize", handleResize)
+      }
       if (resizeObserver) {
         resizeObserver.disconnect()
       }
@@ -92,7 +112,20 @@ export function Highlighter({
     iterations,
     padding,
     multiline,
+    shouldReduceMotion,
   ])
+
+  if (shouldReduceMotion) {
+    return (
+      <span
+        ref={elementRef}
+        className="relative inline-block rounded-[0.2rem] bg-transparent px-0.5"
+        style={{ backgroundColor: color }}
+      >
+        {children}
+      </span>
+    )
+  }
 
   return (
     <span ref={elementRef} className="relative inline-block bg-transparent">

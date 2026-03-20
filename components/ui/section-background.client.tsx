@@ -1,6 +1,8 @@
 "use client";
 
 import { LazyMotion, domAnimation, m, useReducedMotion } from "motion/react";
+import { useInView } from "motion/react";
+import { useRef } from "react";
 
 import { StripedPattern } from "@/components/magicui/striped-pattern";
 import { cn } from "@/lib/utils";
@@ -71,16 +73,24 @@ export default function SectionBackground({
   pattern = "interactive",
   className,
 }: SectionBackgroundProps) {
+  const rootRef = useRef<HTMLDivElement | null>(null);
   const shouldReduceMotion = useReducedMotion();
+  const isInView = useInView(rootRef, {
+    margin: "-15% 0px -15% 0px",
+  });
+  const animateHeavy = isInView && !shouldReduceMotion;
   const colors = toneClasses[tone];
-  const showInteractive = pattern === "interactive";
+  const showInteractive = pattern === "interactive" && animateHeavy;
+  const showInteractiveStatic = pattern === "interactive" && !animateHeavy;
   const showStriped = pattern === "striped";
   const showGrid = pattern === "grid";
   const showDot = pattern === "dot";
-  const showRipple = pattern === "ripple";
+  const showRipple = pattern === "ripple" && animateHeavy;
+  const showRippleStatic = pattern === "ripple" && !animateHeavy;
 
   return (
     <div
+      ref={rootRef}
       aria-hidden
       className={cn(
         "pointer-events-none absolute inset-0 -z-10 overflow-hidden",
@@ -142,6 +152,18 @@ export default function SectionBackground({
         />
       ) : null}
 
+      {showInteractiveStatic ? (
+        <div
+          className={cn(
+            "absolute inset-0 opacity-26",
+            "[background-image:linear-gradient(to_right,color-mix(in_oklch,var(--foreground)_10%,transparent)_1px,transparent_1px),linear-gradient(to_bottom,color-mix(in_oklch,var(--foreground)_10%,transparent)_1px,transparent_1px)]",
+            "[background-size:56px_56px]",
+            "[mask-image:radial-gradient(circle_at_center,white,transparent_88%)]",
+            colors.interactive,
+          )}
+        />
+      ) : null}
+
       {showRipple ? (
         <LazyMotion features={domAnimation}>
           <div
@@ -150,11 +172,11 @@ export default function SectionBackground({
               "[mask-image:radial-gradient(circle_at_center,white,transparent_86%)]",
             )}
           >
-            {[0, 1, 2].map((index) => (
+            {[0, 1].map((index) => (
               <m.div
                 key={`ripple-${index}`}
                 className={cn(
-                  "absolute top-1/2 left-1/2 h-[19rem] w-[19rem] -translate-x-1/2 -translate-y-1/2 rounded-full border",
+                  "absolute top-1/2 left-1/2 h-[16rem] w-[16rem] -translate-x-1/2 -translate-y-1/2 rounded-full border",
                   colors.ripple,
                 )}
                 initial={
@@ -171,9 +193,9 @@ export default function SectionBackground({
                   shouldReduceMotion
                     ? undefined
                     : {
-                        duration: 5.8,
+                        duration: 6.4,
                         repeat: Number.POSITIVE_INFINITY,
-                        delay: index * 1.2,
+                        delay: index * 1.4,
                         ease: "easeOut",
                       }
                 }
@@ -181,6 +203,16 @@ export default function SectionBackground({
             ))}
           </div>
         </LazyMotion>
+      ) : null}
+
+      {showRippleStatic ? (
+        <div
+          className={cn(
+            "absolute top-1/2 left-1/2 h-[16rem] w-[16rem] -translate-x-1/2 -translate-y-1/2 rounded-full border opacity-45",
+            "[mask-image:radial-gradient(circle_at_center,white,transparent_84%)]",
+            colors.ripple,
+          )}
+        />
       ) : null}
     </div>
   );

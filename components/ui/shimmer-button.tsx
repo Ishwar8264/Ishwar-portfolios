@@ -58,8 +58,8 @@ export function ShimmerButton({
           "@container-[size] absolute inset-0 overflow-visible"
         )}
       >
-        <div className="animate-shimmer-slide absolute inset-0 aspect-[1] h-[100cqh] rounded-none [mask:none]">
-          <div className="animate-spin-around absolute -inset-full w-auto [translate:0_0] rotate-0 [background:conic-gradient(from_calc(270deg-(var(--spread)*0.5)),transparent_0,var(--shimmer-color)_var(--spread),transparent_var(--spread))]" />
+        <div className="absolute inset-0 aspect-[1] h-[100cqh] rounded-none [mask:none] motion-safe:group-hover:animate-shimmer-slide motion-safe:group-focus-visible:animate-shimmer-slide">
+          <div className="absolute -inset-full w-auto [translate:0_0] rotate-0 [background:conic-gradient(from_calc(270deg-(var(--spread)*0.5)),transparent_0,var(--shimmer-color)_var(--spread),transparent_var(--spread))] motion-safe:group-hover:animate-spin-around motion-safe:group-focus-visible:animate-spin-around" />
         </div>
       </div>
       {children}

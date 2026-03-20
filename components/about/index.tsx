@@ -81,6 +81,7 @@ export default function AboutSection({ profile, cards }: AboutSectionProps) {
               alt={`${profile.name} portrait`}
               width={960}
               height={1200}
+              sizes="(max-width: 1024px) 92vw, 36vw"
               className="h-[320px] w-full rounded-2xl object-cover object-center sm:h-[420px] lg:h-[min(66svh,580px)]"
             />
           </MagicCard>

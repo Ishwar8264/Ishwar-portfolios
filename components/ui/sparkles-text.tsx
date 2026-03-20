@@ -1,7 +1,7 @@
 "use client"
 
 import { CSSProperties, ReactElement, useEffect, useState } from "react"
-import { motion } from "motion/react"
+import { motion, useReducedMotion } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
@@ -91,9 +91,14 @@ export const SparklesText: React.FC<SparklesTextProps> = ({
   sparklesCount = 10,
   ...props
 }) => {
+  const shouldReduceMotion = useReducedMotion()
   const [sparkles, setSparkles] = useState<Sparkle[]>([])
 
   useEffect(() => {
+    if (shouldReduceMotion) {
+      return
+    }
+
     const generateStar = (): Sparkle => {
       const starX = `${Math.random() * 100}%`
       const starY = `${Math.random() * 100}%`
@@ -111,22 +116,25 @@ export const SparklesText: React.FC<SparklesTextProps> = ({
     }
 
     const updateStars = () => {
-      setSparkles((currentSparkles) =>
-        currentSparkles.map((star) => {
-          if (star.lifespan <= 0) {
+      setSparkles((currentSparkles) => {
+        const refreshTarget = Math.floor(
+          Math.random() * Math.max(currentSparkles.length, 1),
+        )
+
+        return currentSparkles.map((star, index) => {
+          if (index === refreshTarget || star.lifespan <= 0) {
             return generateStar()
-          } else {
-            return { ...star, lifespan: star.lifespan - 0.1 }
           }
+          return { ...star, lifespan: star.lifespan - 0.35 }
         })
-      )
+      })
     }
 
     initializeStars()
-    const interval = setInterval(updateStars, 100)
+    const interval = setInterval(updateStars, 360)
 
     return () => clearInterval(interval)
-  }, [colors.first, colors.second, sparklesCount])
+  }, [colors.first, colors.second, sparklesCount, shouldReduceMotion])
 
   return (
     <div
