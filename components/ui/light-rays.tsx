@@ -1,7 +1,7 @@
 "use client"
 
-import { useEffect, useState, type CSSProperties } from "react"
-import { motion } from "motion/react"
+import { useMemo, type CSSProperties } from "react"
+import { motion, useReducedMotion } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
@@ -95,12 +95,18 @@ export function LightRays({
   ref,
   ...props
 }: LightRaysProps) {
-  const [rays, setRays] = useState<LightRay[]>([])
+  const shouldReduceMotion = useReducedMotion()
   const cycleDuration = Math.max(speed, 0.1)
+  const rays = useMemo(() => {
+    if (shouldReduceMotion) {
+      return []
+    }
+    return createRays(count, cycleDuration)
+  }, [count, cycleDuration, shouldReduceMotion])
 
-  useEffect(() => {
-    setRays(createRays(count, cycleDuration))
-  }, [count, cycleDuration])
+  if (shouldReduceMotion) {
+    return null
+  }
 
   return (
     <div

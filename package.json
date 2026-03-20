@@ -7,7 +7,8 @@
     "dev": "next dev",
     "build": "next build",
     "postbuild": "mkdir -p out/_next/static && rsync -a .next/static/ out/_next/static/",
-    "start": "next start",
+    "start": "npx serve@latest out -l 3000",
+    "preview": "pnpm build && npx serve@latest out -l 3000",
     "lint": "eslint"
   },
   "dependencies": {

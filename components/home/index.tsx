@@ -84,19 +84,21 @@ export default function HomeSection({ profile, contact }: HomeSectionProps) {
       <div aria-hidden="true" className="hero-background">
         <FlickeringGrid
           className="hero-flickering-grid"
-          squareSize={5}
-          gridGap={7}
-          flickerChance={0.22}
+          squareSize={6}
+          gridGap={10}
+          flickerChance={0.11}
           color="rgb(59, 130, 246)"
-          maxOpacity={0.26}
+          maxOpacity={0.18}
+          fps={20}
+          maxDevicePixelRatio={1.1}
         />
         <LightRays
-          className="hero-light-rays"
-          count={8}
-          blur={28}
-          speed={16}
+          className="hero-light-rays hidden md:block"
+          count={5}
+          blur={22}
+          speed={18}
           color="rgba(96, 165, 250, 0.22)"
-          length="58vh"
+          length="52vh"
         />
       </div>
 
@@ -107,7 +109,7 @@ export default function HomeSection({ profile, contact }: HomeSectionProps) {
               <div className="hero-pill">
                 <SparklesText
                   className="hero-pill-sparkles text-[0.68rem] font-semibold tracking-[0.12em] uppercase"
-                  sparklesCount={5}
+                  sparklesCount={3}
                   colors={{ first: "#60a5fa", second: "#f472b6" }}
                 >
                   {profile.role}
@@ -261,12 +263,12 @@ export default function HomeSection({ profile, contact }: HomeSectionProps) {
             <div className="hero-image-shell relative w-full overflow-hidden rounded-[calc(1.85rem-1px)] border border-border/70 p-2">
               <div aria-hidden="true" className="hero-image-backdrop">
                 <LightRays
-                  className="hero-image-rays"
-                  count={5}
-                  blur={18}
-                  speed={14}
+                  className="hero-image-rays hidden lg:block"
+                  count={3}
+                  blur={14}
+                  speed={16}
                   color="rgba(255, 255, 255, 0.16)"
-                  length="44vh"
+                  length="36vh"
                 />
               </div>
               <Image
