@@ -2,11 +2,11 @@ import type { ContactData, ProfileData } from "@/types/portfolio";
 
 export const profileData: ProfileData = {
   name: "Ishwar Sahani",
-  role: "Software Engineer (Frontend)",
+  role: "Frontend Software Engineer",
   location: "Gurgaon, India",
-  tagline: "Shipping product-grade frontend systems for startup velocity.",
+  tagline: "Building fast, product-grade interfaces that scale in real startup environments.",
   summary:
-    "Frontend software engineer currently working on Klakar at RiverHead Software on the latest Next.js App Router. Strong in React ecosystem and Zustand, with hands-on delivery in both App Router and Pages Router codebases. I handle server-side and client-side API integration, do API testing with Postman and Swagger (currently focused on Swagger), and work with PostgreSQL/SQL basics plus MongoDB with Prisma and Mongoose while collaborating with Java backend workflows and owning cross-functional startup execution.",
+    "Frontend software engineer at RiverHead Software, currently building Klakar on the latest Next.js App Router with a product-first execution mindset. I ship scalable UI systems using the React ecosystem and Zustand, lead server-side and client-side API integration, and drive API validation with Postman and Swagger (currently focused on Swagger). I work across PostgreSQL/SQL basics plus MongoDB with Prisma and Mongoose while collaborating closely with backend teams to turn startup requirements into clean, reliable releases. I optimize for performance, accessibility, and maintainability so the product stays fast as features scale. My execution style is simple: deliver user value quickly without compromising code quality or long-term stability.",
   codingHours: "1200+",
   focus: [
     "React + Zustand",
