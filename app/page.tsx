@@ -1,7 +1,6 @@
 import AboutSection from "@/components/about";
 import ContactSection from "@/components/contact";
 import ExperienceSection from "@/components/experience";
-import GithubSection from "@/components/github";
 import HomeSection from "@/components/home";
 import ProjectsSection from "@/components/projects";
 import SkillsSection from "@/components/skills";
@@ -14,11 +13,10 @@ export default function Home() {
   return (
     <main className="bg-background text-foreground">
       <HomeSection profile={profileData} contact={contactData} />
-      <AboutSection profile={profileData} />
+      <AboutSection profile={profileData} githubUrl={contactData.github} />
       <ExperienceSection experiences={experienceData} />
       <SkillsSection groups={skillGroups} />
       <ProjectsSection projects={featuredProjects} />
-      <GithubSection profileUrl={contactData.github} />
       <ContactSection contact={contactData} />
     </main>
   );
