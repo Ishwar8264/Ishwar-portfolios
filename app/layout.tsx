@@ -23,10 +23,11 @@ export const metadata: Metadata = {
     "Modern portfolio of Ishwar Sahani, frontend engineer focused on performant and scalable UI.",
   icons: {
     icon: [
-      { url: "/favicon.ico", type: "image/x-icon" },
-      { url: "/icon.png", type: "image/png" },
+      { url: "/favicon.ico", type: "image/x-icon", sizes: "48x48" },
+      { url: "/icon.png", type: "image/png", sizes: "256x256" },
     ],
-    apple: [{ url: "/apple-icon.png" }],
+    shortcut: [{ url: "/favicon.ico" }],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
   },
 };
 
