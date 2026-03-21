@@ -8,10 +8,13 @@ import { profileData, contactData } from "@/content/profile";
 import { experienceData } from "@/content/experience";
 import { featuredProjects } from "@/content/projects";
 import { skillGroups } from "@/content/skills";
-import { getSiteUrl } from "@/lib/seo";
+import { absoluteUrl, getSiteUrl, siteConfig } from "@/lib/seo";
 
 export default function Home() {
   const siteUrl = getSiteUrl();
+  const pageUrl = absoluteUrl("/");
+  const profileImageUrl = absoluteUrl(siteConfig.profileImage.path);
+  const logoUrl = absoluteUrl(siteConfig.logo.path);
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -19,29 +22,90 @@ export default function Home() {
         "@type": "WebSite",
         "@id": `${siteUrl}#website`,
         url: siteUrl,
-        name: "Ishwar Sahani Portfolio",
-        description:
-          "Portfolio website of Ishwar Sahani, frontend software engineer focused on performant and scalable UI systems.",
-        inLanguage: "en",
+        name: siteConfig.name,
+        alternateName: siteConfig.shortName,
+        description: siteConfig.description,
+        inLanguage: "en-IN",
+        image: {
+          "@id": `${siteUrl}#logo`,
+        },
+        publisher: {
+          "@id": `${siteUrl}#person`,
+        },
+      },
+      {
+        "@type": "WebPage",
+        "@id": `${siteUrl}#webpage`,
+        url: pageUrl,
+        name: siteConfig.title,
+        description: siteConfig.description,
+        inLanguage: "en-IN",
+        isPartOf: {
+          "@id": `${siteUrl}#website`,
+        },
+        about: {
+          "@id": `${siteUrl}#person`,
+        },
+        primaryImageOfPage: {
+          "@type": "ImageObject",
+          url: profileImageUrl,
+          width: siteConfig.profileImage.width,
+          height: siteConfig.profileImage.height,
+        },
       },
       {
         "@type": "Person",
         "@id": `${siteUrl}#person`,
         name: profileData.name,
         url: siteUrl,
-        image: `${siteUrl}/icon.png`,
+        image: profileImageUrl,
+        description: siteConfig.description,
         jobTitle: profileData.role,
+        mainEntityOfPage: {
+          "@id": `${siteUrl}#webpage`,
+        },
         worksFor: {
           "@type": "Organization",
+          "@id": `${siteUrl}#current-company`,
           name: profileData.currentCompany,
         },
         sameAs: [contactData.linkedin, contactData.github],
+        email: `mailto:${contactData.email}`,
+        telephone: contactData.phone,
         knowsAbout: profileData.focus,
         address: {
           "@type": "PostalAddress",
           addressLocality: "Gurgaon",
+          addressRegion: "Haryana",
           addressCountry: "IN",
         },
+      },
+      {
+        "@type": "ItemList",
+        "@id": `${siteUrl}#featured-projects`,
+        name: "Featured projects by Ishwar Sahani",
+        itemListElement: featuredProjects.map((project, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          item: {
+            "@type": "CreativeWork",
+            name: project.title,
+            description: project.description,
+            url: project.liveUrl,
+            image: absoluteUrl(project.imageSrc),
+            creator: {
+              "@id": `${siteUrl}#person`,
+            },
+          },
+        })),
+      },
+      {
+        "@type": "ImageObject",
+        "@id": `${siteUrl}#logo`,
+        url: logoUrl,
+        width: siteConfig.logo.width,
+        height: siteConfig.logo.height,
+        caption: siteConfig.logo.alt,
       },
     ],
   };

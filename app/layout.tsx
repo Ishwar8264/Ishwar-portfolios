@@ -6,7 +6,7 @@ import ThemeScript from "@/components/theme/theme-script";
 import InstallPrompt from "@/components/pwa/install-prompt.client";
 import ServiceWorkerRegistration from "@/components/pwa/service-worker-registration.client";
 import { navbarConfig } from "@/content/navigation";
-import { getSiteUrl, siteConfig } from "@/lib/seo";
+import { absoluteUrl, getSiteUrl, siteConfig } from "@/lib/seo";
 
 import "./globals.css";
 
@@ -47,10 +47,10 @@ export const metadata: Metadata = {
     locale: siteConfig.locale,
     images: [
       {
-        url: "/icon.png",
-        width: 256,
-        height: 256,
-        alt: `${siteConfig.name} website logo`,
+        url: absoluteUrl(siteConfig.profileImage.path),
+        width: siteConfig.profileImage.width,
+        height: siteConfig.profileImage.height,
+        alt: siteConfig.profileImage.alt,
       },
     ],
   },
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     title: siteConfig.title,
     description: siteConfig.description,
     creator: "@Ishwar8264",
-    images: ["/icon.png"],
+    images: [absoluteUrl(siteConfig.profileImage.path)],
   },
   robots: {
     index: true,
@@ -89,7 +89,11 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico", type: "image/x-icon", sizes: "48x48" },
-      { url: "/icon.png", type: "image/png", sizes: "256x256" },
+      {
+        url: siteConfig.logo.path,
+        type: "image/png",
+        sizes: `${siteConfig.logo.width}x${siteConfig.logo.height}`,
+      },
     ],
     shortcut: [{ url: "/favicon.ico" }],
     apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
