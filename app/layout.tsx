@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "@/components/navigation";
 import ThemeProvider from "@/components/theme/theme-provider.client";
 import ThemeScript from "@/components/theme/theme-script";
+import InstallPrompt from "@/components/pwa/install-prompt.client";
+import ServiceWorkerRegistration from "@/components/pwa/service-worker-registration.client";
 import { navbarConfig } from "@/content/navigation";
 import { getSiteUrl, siteConfig } from "@/lib/seo";
 
@@ -72,6 +74,11 @@ export const metadata: Metadata = {
   },
   category: "technology",
   manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    title: siteConfig.shortName,
+    statusBarStyle: "default",
+  },
   ...(googleVerification
     ? {
         verification: {
@@ -103,8 +110,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider />
+        <ServiceWorkerRegistration />
         <Navbar config={navbarConfig} />
         <div>{children}</div>
+        <InstallPrompt />
       </body>
     </html>
   );
