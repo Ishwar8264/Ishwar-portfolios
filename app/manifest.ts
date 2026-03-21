@@ -5,14 +5,28 @@ export const dynamic = "force-static";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
+    id: "/",
     name: siteConfig.name,
     short_name: siteConfig.shortName,
     description: siteConfig.description,
     start_url: "/",
+    scope: "/",
     display: "standalone",
+    orientation: "portrait",
     background_color: "#0f172a",
     theme_color: "#0f172a",
+    categories: ["portfolio", "technology", "developer"],
     icons: [
+      {
+        src: "/icon-192.png",
+        sizes: "192x192",
+        type: "image/png",
+      },
+      {
+        src: "/icon-512.png",
+        sizes: "512x512",
+        type: "image/png",
+      },
       {
         src: "/icon.png",
         sizes: "256x256",
@@ -22,6 +36,29 @@ export default function manifest(): MetadataRoute.Manifest {
         src: "/apple-icon.png",
         sizes: "180x180",
         type: "image/png",
+      },
+    ],
+    shortcuts: [
+      {
+        name: "Projects",
+        short_name: "Projects",
+        description: "Jump straight to featured projects.",
+        url: "/#projects",
+        icons: [{ src: "/icon-192.png", sizes: "192x192", type: "image/png" }],
+      },
+      {
+        name: "Experience",
+        short_name: "Experience",
+        description: "Open the experience timeline.",
+        url: "/#experience",
+        icons: [{ src: "/icon-192.png", sizes: "192x192", type: "image/png" }],
+      },
+      {
+        name: "Contact",
+        short_name: "Contact",
+        description: "Reach Ishwar directly.",
+        url: "/#contact",
+        icons: [{ src: "/icon-192.png", sizes: "192x192", type: "image/png" }],
       },
     ],
   };
