@@ -11,6 +11,7 @@ export const navbarConfig: NavbarConfig = {
     { label: "Home", href: "#home" },
     { label: "About", href: "#about" },
     { label: "Experience", href: "#experience" },
+    { label: "Certifications", href: "#certifications" },
     { label: "Skills", href: "#skills" },
     { label: "Projects", href: "#projects" },
     { label: "GitHub", href: "#github" },

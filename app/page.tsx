@@ -1,9 +1,11 @@
 import AboutSection from "@/components/about";
+import CertificationsSection from "@/components/certifications";
 import ContactSection from "@/components/contact";
 import ExperienceSection from "@/components/experience";
 import HomeSection from "@/components/home";
 import ProjectsSection from "@/components/projects";
 import SkillsSection from "@/components/skills";
+import { certificationsData } from "@/content/certifications";
 import { profileData, contactData } from "@/content/profile";
 import { experienceData } from "@/content/experience";
 import { featuredProjects } from "@/content/projects";
@@ -119,6 +121,7 @@ export default function Home() {
       <HomeSection profile={profileData} contact={contactData} />
       <AboutSection profile={profileData} githubUrl={contactData.github} />
       <ExperienceSection experiences={experienceData} />
+      <CertificationsSection certifications={certificationsData} />
       <SkillsSection groups={skillGroups} />
       <ProjectsSection projects={featuredProjects} />
       <ContactSection contact={contactData} />

@@ -44,3 +44,18 @@ export type ExperienceData = {
   projectUrl?: string;
   highlights: string[];
 };
+
+export type CertificationData = {
+  title: string;
+  issuer: string;
+  description: string;
+  kind?: string;
+  issuedAt?: string;
+  result?: string;
+  credentialId?: string;
+  credentialUrl?: string;
+  proofUrl?: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  skills?: string[];
+};
