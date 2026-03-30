@@ -42,6 +42,9 @@ export type ExperienceData = {
   location: string;
   projectName?: string;
   projectUrl?: string;
+  current?: boolean;
+  summary?: string;
+  focusAreas?: string[];
   highlights: string[];
 };
 

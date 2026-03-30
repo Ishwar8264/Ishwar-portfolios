@@ -97,7 +97,7 @@ export default function AboutSection({
 
       <div className="relative z-10 mx-auto w-[min(1200px,95%)]">
         <div className="grid gap-6 md:grid-cols-2 md:items-start lg:gap-8">
-          <div className="space-y-6">
+          <div className="min-w-0 space-y-6">
             <BlurFade inView delay={0.05}>
               <MagicCard
                 mode="orb"
@@ -120,7 +120,7 @@ export default function AboutSection({
 
             <BlurFade inView delay={0.1}>
               <ModernGlowCard
-                className="p-6"
+                className="min-w-0 p-6"
                 accentFrom="#fb7185"
                 accentTo="#f59e0b"
               >
@@ -133,9 +133,9 @@ export default function AboutSection({
                   <AnimatedName
                     name={profile.name}
                     place="about"
-                    size="xl"
+                    size="lg"
                     palette="warm"
-                    className="!flex-nowrap !whitespace-nowrap"
+                    className="max-w-full sm:!text-4xl"
                   />
                 </h2>
                 <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-base">
@@ -165,10 +165,10 @@ export default function AboutSection({
             </BlurFade>
           </div>
 
-          <div id="github" className="space-y-4 self-start scroll-mt-28">
+          <div id="github" className="min-w-0 space-y-4 self-start scroll-mt-28">
             <BlurFade inView delay={0.06}>
               <ModernGlowCard
-                className="p-6"
+                className="min-w-0 p-6"
                 accentFrom="#22d3ee"
                 accentTo="#3b82f6"
               >
@@ -214,7 +214,7 @@ export default function AboutSection({
 
             <BlurFade inView delay={0.11}>
               <ModernGlowCard
-                className="p-4"
+                className="min-w-0 p-4"
                 accentFrom="#38bdf8"
                 accentTo="#fb7185"
               >
@@ -231,7 +231,7 @@ export default function AboutSection({
 
             <BlurFade inView delay={0.14}>
               <ModernGlowCard
-                className="p-4"
+                className="min-w-0 p-4"
                 accentFrom="#22d3ee"
                 accentTo="#6366f1"
               >
@@ -248,7 +248,7 @@ export default function AboutSection({
 
             <BlurFade inView delay={0.17}>
               <ModernGlowCard
-                className="p-4"
+                className="min-w-0 p-4"
                 accentFrom="#a78bfa"
                 accentTo="#22d3ee"
               >
