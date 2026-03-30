@@ -93,7 +93,7 @@ export default function ExperienceSection({
 
       <div className="relative z-10 mx-auto w-[min(1200px,95%)]">
         <div className="grid gap-8 xl:grid-cols-[360px_minmax(0,1fr)] xl:items-start">
-          <div className="space-y-4 xl:sticky xl:top-28">
+          <div className="space-y-4 xl:sticky xl:top-28 xl:pt-5">
             <BlurFade inView delay={0.04}>
               <ModernGlowCard
                 className="min-w-0 p-6 sm:p-7"
