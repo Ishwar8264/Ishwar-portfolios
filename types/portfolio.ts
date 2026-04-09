@@ -2,13 +2,12 @@ export type ProfileData = {
   name: string;
   role: string;
   location: string;
+  education: string;
   tagline: string;
   summary: string;
-  codingHours: string;
   focus: string[];
-  currentCompany: string;
-  currentProduct: string;
-  currentRolePeriod: string;
+  primaryStack: string;
+  specialty: string;
 };
 
 export type ContactData = {
@@ -32,6 +31,12 @@ export type ProjectData = {
   imageAlt: string;
   repoUrl?: string;
   status: string;
+};
+
+export type ServiceData = {
+  title: string;
+  description: string;
+  keywords: string[];
 };
 
 export type ExperienceData = {

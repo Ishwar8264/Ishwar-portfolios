@@ -29,8 +29,13 @@ export default function SkillsSection({ groups }: SkillsSectionProps) {
             </AnimatedShinyText>
           </p>
           <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-            Frontend-first stack with product engineering focus.
+            Frontend development skills for modern websites and web apps.
           </h2>
+          <p className="max-w-3xl text-sm leading-6 text-muted-foreground sm:text-base">
+            Focused on Next.js, React.js, JavaScript, responsive design,
+            Tailwind CSS, and API integration for fast, user-friendly frontend
+            experiences.
+          </p>
         </BlurFade>
 
         <BlurFade

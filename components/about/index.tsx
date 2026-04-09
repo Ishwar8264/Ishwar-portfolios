@@ -58,9 +58,15 @@ export default function AboutSection({
       size: "md",
     },
     {
-      label: "Coding Hours",
-      value: `${profile.codingHours} hrs`,
+      label: "Education",
+      value: profile.education,
       palette: "brandCool",
+      size: "md",
+    },
+    {
+      label: "Location",
+      value: profile.location,
+      palette: "brandPrimary",
       size: "md",
     },
   ];

@@ -1,9 +1,10 @@
 export const siteConfig = {
   name: "Ishwar Sahani",
   shortName: "Ishwar",
-  title: "Ishwar Sahani | Frontend Software Engineer Portfolio",
+  title:
+    "Frontend Developer in Gurugram | React & Next.js | Ishwar Sahani",
   description:
-    "Portfolio of Ishwar Sahani, a frontend software engineer in Gurgaon building scalable Next.js, React, and TypeScript interfaces for startup products.",
+    "Ishwar Sahani is a Frontend Developer in Gurugram, India building responsive, SEO-friendly websites with Next.js, React.js, Tailwind CSS, and API integration.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://ishwar8264.github.io",
   locale: "en_IN",
   profileImage: {
@@ -20,17 +21,16 @@ export const siteConfig = {
   },
   keywords: [
     "Ishwar Sahani",
-    "Frontend Software Engineer",
-    "Frontend Engineer Portfolio",
-    "Next.js Developer",
-    "React TypeScript Developer",
-    "Next.js App Router",
-    "TypeScript",
-    "React",
+    "Frontend Developer in Gurugram",
+    "Frontend Developer Gurugram",
+    "Frontend Developer India",
+    "React Developer India",
+    "Next.js Developer India",
+    "JavaScript Developer Gurugram",
+    "Responsive Web Developer India",
     "Tailwind CSS Developer",
-    "UI Performance",
-    "Startup Product Engineer",
-    "Gurgaon Frontend Software Engineer",
+    "API Integration Developer",
+    "Web Developer India",
   ],
   social: {
     linkedIn: "https://www.linkedin.com/in/ishwarsahani/",

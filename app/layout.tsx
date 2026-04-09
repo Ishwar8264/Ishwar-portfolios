@@ -35,12 +35,13 @@ export const metadata: Metadata = {
   authors: [{ name: siteConfig.name, url: siteUrl }],
   creator: siteConfig.name,
   publisher: siteConfig.name,
+  referrer: "origin-when-cross-origin",
   alternates: {
-    canonical: "/",
+    canonical: absoluteUrl("/"),
   },
   openGraph: {
     type: "website",
-    url: "/",
+    url: absoluteUrl("/"),
     title: siteConfig.title,
     description: siteConfig.description,
     siteName: siteConfig.name,
@@ -74,6 +75,11 @@ export const metadata: Metadata = {
   },
   category: "technology",
   manifest: "/manifest.webmanifest",
+  formatDetection: {
+    address: false,
+    email: false,
+    telephone: false,
+  },
   appleWebApp: {
     capable: true,
     title: siteConfig.shortName,
@@ -106,7 +112,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="light" suppressHydrationWarning>
+    <html lang="en-IN" data-theme="light" suppressHydrationWarning>
       <head>
         <ThemeScript />
       </head>

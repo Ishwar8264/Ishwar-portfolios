@@ -27,8 +27,13 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
             </AnimatedShinyText>
           </p>
           <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-            Selected work and shipped interfaces.
+            Portfolio projects, client work, and shipped frontend builds.
           </h2>
+          <p className="max-w-3xl text-sm leading-6 text-muted-foreground sm:text-base">
+            A selection of responsive websites and web applications built with
+            React.js, Next.js, JavaScript, and modern frontend development
+            practices.
+          </p>
         </BlurFade>
 
         <div className="grid gap-4 md:grid-cols-2">
