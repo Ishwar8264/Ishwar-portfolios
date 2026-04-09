@@ -23,34 +23,30 @@ type HomeSectionProps = {
 
 export default function HomeSection({ profile, contact }: HomeSectionProps) {
   const metrics = [
-    { label: "Current Company", value: profile.currentCompany, from: "#f97316", to: "#f43f5e" },
-    { label: "Current Product", value: profile.currentProduct, from: "#0ea5e9", to: "#2563eb" },
-    { label: "Location", value: profile.location, from: "#8b5cf6", to: "#22c55e" },
+    { label: "Based In", value: profile.location, from: "#f97316", to: "#f43f5e" },
+    { label: "Primary Stack", value: profile.primaryStack, from: "#0ea5e9", to: "#2563eb" },
+    { label: "Education", value: profile.education, from: "#8b5cf6", to: "#22c55e" },
   ] as const;
   const summaryHighlights = [
     {
-      text: "Klakar",
+      text: "Frontend Developer in Gurugram, India",
       color: "rgba(96, 165, 250, 0.28)",
     },
     {
-      text: "Next.js App Router",
+      text: "Next.js, React.js, JavaScript, HTML5, CSS3, Tailwind CSS",
       color: "rgba(125, 211, 252, 0.28)",
     },
     {
-      text: "React ecosystem and Zustand",
+      text: "modern websites and web applications",
       color: "rgba(244, 114, 182, 0.24)",
     },
     {
-      text: "server-side and client-side API integration",
+      text: "API integration, and responsive design",
       color: "rgba(74, 222, 128, 0.24)",
     },
     {
-      text: "Postman and Swagger",
+      text: "clean, maintainable code",
       color: "rgba(251, 191, 36, 0.28)",
-    },
-    {
-      text: "PostgreSQL/SQL basics plus MongoDB with Prisma and Mongoose",
-      color: "rgba(192, 132, 252, 0.24)",
     },
   ] as const;
 
@@ -117,7 +113,7 @@ export default function HomeSection({ profile, contact }: HomeSectionProps) {
               </div>
               <div className="hero-pill">
                 <AnimatedShinyText className="text-[0.68rem] font-semibold tracking-[0.12em] uppercase text-muted-foreground">
-                  {profile.currentRolePeriod}
+                  {profile.specialty}
                 </AnimatedShinyText>
               </div>
             </div>
@@ -284,16 +280,11 @@ export default function HomeSection({ profile, contact }: HomeSectionProps) {
 
               <div className="hero-floating-card hero-floating-card-top left-4 top-4">
                 <p className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
-                  Live Product
+                  Core Work
                 </p>
-                <a
-                  className="mt-1 block text-sm font-semibold hover:underline"
-                  href="https://klakar.com/"
-                  target="_blank"
-                  rel="noreferrer noopener"
-                >
-                  Klakar
-                </a>
+                <p className="mt-1 block text-sm font-semibold">
+                  Frontend Websites & Web Apps
+                </p>
               </div>
 
               <div className="hero-floating-card hero-floating-card-bottom right-4 bottom-4 flex items-center gap-3">

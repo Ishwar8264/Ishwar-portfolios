@@ -32,11 +32,12 @@ export default function ContactSection({ contact }: ContactSectionProps) {
                 </AnimatedShinyText>
               </p>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-                Let&apos;s build something sharp and useful.
+                Need a Frontend Developer in Gurugram, India?
               </h2>
               <p className="mt-3 max-w-xl text-sm text-muted-foreground sm:text-base">
-                Open for frontend engineering roles, freelance builds, and
-                product-focused collaboration.
+                Available for freelance frontend development, React.js and
+                Next.js projects, responsive website builds, and API-integrated
+                web interfaces.
               </p>
 
               <div className="mt-6 flex flex-wrap gap-2">

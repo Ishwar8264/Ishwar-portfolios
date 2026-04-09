@@ -42,7 +42,7 @@ export default function ExperienceSection({
 }: ExperienceSectionProps) {
   const cityCount = new Set(experiences.map((item) => getCityLabel(item.location)))
     .size;
-  const liveProductCount = experiences.filter((item) => item.projectName).length;
+  const projectTrackCount = experiences.filter((item) => item.projectName).length;
   const focusAreaCount = new Set(
     experiences.flatMap((item) => item.focusAreas ?? []),
   ).size;
@@ -52,15 +52,15 @@ export default function ExperienceSection({
   const sectionStats = [
     {
       value: `${experiences.length}`,
-      label: "Career chapters",
+      label: "Work chapters",
       icon: BriefcaseBusiness,
       iconClassName: "text-sky-500",
       shellClassName:
         "bg-[linear-gradient(135deg,rgba(14,165,233,0.16),rgba(59,130,246,0.08))]",
     },
     {
-      value: `${liveProductCount}`,
-      label: "Live product roles",
+      value: `${projectTrackCount}`,
+      label: "Client project tracks",
       icon: BadgeCheck,
       iconClassName: "text-emerald-500",
       shellClassName:
@@ -68,7 +68,7 @@ export default function ExperienceSection({
     },
     {
       value: `${cityCount}`,
-      label: "City contexts",
+      label: "Location contexts",
       icon: MapPin,
       iconClassName: "text-fuchsia-500",
       shellClassName:
@@ -106,18 +106,18 @@ export default function ExperienceSection({
                   </AnimatedShinyText>
                 </p>
                 <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-                  Experience shaped by startup delivery, responsive execution,
-                  and product-focused frontend work.
+                  Freelance experience shaped by responsive builds, client
+                  delivery, and modern frontend execution.
                 </h2>
                 <p className="mt-4 text-sm leading-6 text-muted-foreground sm:text-base">
-                  Cleaner chapter cards, stronger timeline anchors, and better
-                  scan rhythm make the section feel more intentional.
+                  A quick view of client work, delivery patterns, and the
+                  frontend areas I work on most often.
                 </p>
 
                 {currentExperience ? (
                   <div className="mt-6 rounded-[1.7rem] border border-border/70 bg-background/72 p-4 sm:p-5 backdrop-blur">
                     <p className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
-                      Current role snapshot
+                      Current focus
                     </p>
                     <p className="mt-3 text-base font-semibold tracking-tight">
                       {currentExperience.role}
