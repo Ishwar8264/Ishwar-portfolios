@@ -1,0 +1,76 @@
+export type ProfileData = {
+  name: string;
+  role: string;
+  location: string;
+  education: string;
+  tagline: string;
+  summary: string;
+  focus: string[];
+  primaryStack: string;
+  specialty: string;
+};
+
+export type ContactData = {
+  email: string;
+  phone: string;
+  linkedin: string;
+  github: string;
+  whatsapp?: string;
+};
+
+export type SkillGroup = {
+  title: string;
+  items: string[];
+};
+
+export type ProjectData = {
+  title: string;
+  description: string;
+  stack: string[];
+  liveUrl: string;
+  imageSrc: string;
+  imageAlt: string;
+  repoUrl?: string;
+  status: string;
+};
+
+export type ServiceData = {
+  title: string;
+  description: string;
+  keywords: string[];
+};
+
+export type ExperienceData = {
+  /**
+   * Discriminator used by the Experience section to render items under
+   * the correct group: "job" for full-time employment, "freelance" for
+   * independent client work. Defaults to "job" for backward compatibility.
+   */
+  kind?: "job" | "freelance";
+  company: string;
+  companyUrl?: string;
+  role: string;
+  period: string;
+  location: string;
+  projectName?: string;
+  projectUrl?: string;
+  current?: boolean;
+  summary?: string;
+  focusAreas?: string[];
+  highlights: string[];
+};
+
+export type CertificationData = {
+  title: string;
+  issuer: string;
+  description: string;
+  kind?: string;
+  issuedAt?: string;
+  result?: string;
+  credentialId?: string;
+  credentialUrl?: string;
+  proofUrl?: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  skills?: string[];
+};
