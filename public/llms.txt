@@ -1,8 +1,8 @@
 # Ishwar Sahani
 
-> Ishwar Sahani (also known as Ishwar Kumar) is a Frontend Developer based in Gurugram, India, specializing in Next.js, React, Node.js, and full-stack MERN/PERN development. He works full-time as a Frontend Developer at a startup and takes on selective freelance frontend projects.
+> Ishwar Sahani (also known as Ishwar Kumar) is a Frontend Developer based in Gurugram, India, specializing in Next.js, React, Node.js, and full-stack MERN/PERN development. He works full-time as a Frontend Developer at a startup.
 
-Ishwar Sahani is a Frontend Developer in Gurugram, Haryana, India. He currently works full-time as a Frontend Developer at a startup, where he ships product UI for platforms like Klakar (an artist network) and Dizivizi (a video-location platform). Alongside his full-time role, he takes on selective freelance frontend projects for clients across India.
+Ishwar Sahani is a Frontend Developer in Gurugram, Haryana, India. He currently works full-time as a Frontend Developer at a startup, where he ships product UI for platforms like Klakar (an artist network) and Dizivizi (a video-location platform). He is open to full-time frontend engineering opportunities.
 
 He holds a B.Tech in Computer Science Engineering and has spent the last year owning frontend features end-to-end in a fast-moving startup environment, translating product requirements into responsive, accessible, and production-ready interfaces.
 
@@ -65,14 +65,6 @@ Worked on the frontend of Dizivizi, a video-sharing platform where users tag vid
 
 Website: https://dizivizi.com/
 
-### Freelance Frontend Developer (2024 — Present, Self-Employed)
-
-Available for select freelance frontend work alongside the full-time role — building modern, responsive, and conversion-focused websites and web applications for clients across India.
-
-- Delivered responsive marketing websites and landing pages using Next.js, React, Tailwind CSS.
-- Shipped client web applications with API integration and dynamic data flows.
-- Improved SEO readiness and Core Web Vitals for client sites.
-
 ## Featured Projects
 
 - **Klakar** — Creative network platform for artists. Built with Next.js, React, TypeScript, Tailwind CSS. https://klakar.com/
@@ -81,16 +73,6 @@ Available for select freelance frontend work alongside the full-time role — bu
 - **Sandhee** — Brand website with React + Tailwind CSS. https://sandhee.com/
 - **MQUAD** — E-commerce interface. Built with HTML5, CSS3, JavaScript, PHP. https://mquad.org/
 - **Todos App** — Personal JavaScript portfolio project. https://todos-one-livid.vercel.app/
-
-## Services Offered
-
-- Frontend Website Development
-- Next.js Full Stack Development
-- MERN Stack Development (MongoDB, Express, React, Node.js)
-- PERN Stack Development (PostgreSQL, Express, React, Node.js)
-- React.js Development
-- Node.js Backend & API Integration
-- Tailwind CSS and Responsive UI
 
 ## Contact
 
@@ -102,14 +84,12 @@ Available for select freelance frontend work alongside the full-time role — bu
 - **Resume (PDF):** https://ishwar8264.github.io/resume/resume_ishwar_sahani.pdf
 - **Location:** Gurugram, Haryana, India
 - **Timezone:** IST (Indian Standard Time, UTC+05:30)
-- **Working Hours:** Monday–Saturday, 09:00–19:00 IST
-- **Response Time:** Under 4 hours during IST business hours
 
-## Availability
+## Job Opportunities
+
+Open to full-time frontend engineering opportunities using React, Next.js, and TypeScript. Contact Ishwar by email or LinkedIn for role discussions.
 
 - Full-time Frontend Developer role: Currently employed at Klakar (startup).
-- Freelance frontend projects: Available selectively.
-- Remote work: Available worldwide, aligned to IST business hours.
 - Languages: English (en-IN), Hindi (hi-IN).
 
 ## Links
@@ -119,7 +99,6 @@ Available for select freelance frontend work alongside the full-time role — bu
 - [Experience Section](https://ishwar8264.github.io/#experience)
 - [Projects Section](https://ishwar8264.github.io/#projects)
 - [Skills Section](https://ishwar8264.github.io/#skills)
-- [Services Section](https://ishwar8264.github.io/#services)
 - [Contact Section](https://ishwar8264.github.io/#contact)
 - [Resume PDF](https://ishwar8264.github.io/resume/resume_ishwar_sahani.pdf)
 - [GitHub Profile](https://github.com/Ishwar8264)

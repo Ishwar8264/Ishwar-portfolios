@@ -4,13 +4,11 @@ import ContactSection from "@/components/contact";
 import ExperienceSection from "@/components/experience";
 import HomeSection from "@/components/home";
 import ProjectsSection from "@/components/projects";
-import ServicesSection from "@/components/services";
 import SkillsSection from "@/components/skills";
 import { certificationsData } from "@/content/certifications";
 import { profileData, contactData } from "@/content/profile";
 import { experienceData } from "@/content/experience";
 import { featuredProjects } from "@/content/projects";
-import { servicesData } from "@/content/services";
 import { skillGroups } from "@/content/skills";
 import { buildJsonLdGraph } from "@/lib/seo";
 
@@ -34,14 +32,13 @@ export default function Home() {
         TypeScript, and full-stack MERN and PERN development. He works
         full-time as a Frontend Developer at Klakar (an artist network
         startup) and previously at Dizivizi (a video-location platform).
-        Available for selective freelance frontend projects worldwide.
+        Open to full-time frontend engineering opportunities.
       </p>
       <HomeSection profile={profileData} contact={contactData} />
       <AboutSection profile={profileData} githubUrl={contactData.github} />
       <ExperienceSection experiences={experienceData} />
       <CertificationsSection certifications={certificationsData} />
       <SkillsSection groups={skillGroups} />
-      <ServicesSection services={servicesData} />
       <ProjectsSection projects={featuredProjects} />
       <ContactSection contact={contactData} />
     </main>

@@ -1,25 +1,7 @@
 import { profileData, contactData } from "@/content/profile";
-import { servicesData } from "@/content/services";
 import { featuredProjects } from "@/content/projects";
 
-/**
- * Central SEO + GEO (Generative Engine Optimization) configuration.
- *
- * This file is the single source of truth for everything search-related:
- *  - Traditional SEO (Google, Bing, Yandex, DuckDuckGo)
- *  - Generative SEO / GEO (ChatGPT, Perplexity, Claude, Google AI Overviews)
- *  - Open Graph / Twitter Card
- *  - JSON-LD structured data (Person, WebSite, WebPage, BreadcrumbList,
- *    FAQPage, ProfessionalService, ItemList, Service, ImageObject)
- *
- * Design rules:
- *  - Every claim is factual and verifiable (no puffery) — AI engines penalize
- *    marketing-speak and reward clean, defensible statements.
- *  - Name variants (Ishwar / Ishwar Kumar / Ishwar Sahani) are explicitly
- *    listed so all three queries resolve to the same person.
- *  - Stack keywords (MERN, PERN, Next.js full stack, Node.js) are present in
- *    both the keywords array and the structured data `knowsAbout` field.
- */
+/** Shared metadata and structured data for the portfolio. */
 
 export const siteConfig = {
   name: "Ishwar Sahani",
@@ -32,13 +14,13 @@ export const siteConfig = {
    * recruiter or founder would search for. Keep under 60 characters.
    */
   title:
-    "Ishwar Sahani — Frontend Developer (Next.js, React, Node.js) | Gurugram",
+    "Ishwar Sahani | Frontend Developer — React & Next.js",
   /**
    * Meta description — 150-160 chars. Front-loaded with the primary
    * entity + role + location so snippets read cleanly on Google.
    */
   description:
-    "Ishwar Sahani (Ishwar Kumar) is a Frontend Developer in Gurugram, India specializing in Next.js, React, Node.js, and full-stack MERN/PERN development.",
+    "Ishwar Sahani is a Frontend Developer in Gurugram building React, Next.js, and TypeScript products. Explore work experience, projects, skills, and resume.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://ishwar8264.github.io",
   locale: "en_IN",
   /** Canonical locale code used in hreflang / OG `locale`. */
@@ -62,20 +44,7 @@ export const siteConfig = {
     height: 512,
     alt: "Ishwar Sahani — personal brand logo",
   },
-  /**
-   * Master keyword list — covers:
-   *  - Person name variants (Ishwar, Ishwar Kumar, Ishwar Sahani)
-   *  - Role variants (Frontend Developer, React Developer, Next.js Developer,
-   *    Next.js Full Stack, Node.js Developer, Full Stack Developer)
-   *  - Stack variants (MERN, PERN, Next.js, React, Node.js, TypeScript)
-   *  - Location variants (Gurugram, India)
-   *  - Skill variants (API Integration, Responsive Design)
-   *  - Long-tail intent ("hire frontend developer india", etc.)
-   *
-   * Order matters — most important first. Used by Next.js Metadata API to
-   * emit `<meta name="keywords">`. While Google largely ignores this tag,
-   * Bing, Yandex, DuckDuckGo and several AI crawlers still read it.
-   */
+  /** Technologies and role terms describing the portfolio. */
   keywords: [
     // Person name variants — entity resolution for AI engines
     "Ishwar Sahani",
@@ -111,8 +80,6 @@ export const siteConfig = {
     "Ishwar Sahani Portfolio",
     "Ishwar Sahani GitHub",
     "Ishwar Sahani LinkedIn",
-    "Hire Frontend Developer India",
-    "Freelance Frontend Developer Gurugram",
   ],
   social: {
     linkedIn: "https://www.linkedin.com/in/ishwarsahani/",
@@ -154,73 +121,7 @@ export function absoluteUrl(path = "/") {
   return new URL(path, `${getSiteUrl()}/`).toString();
 }
 
-function createHashId(value: string) {
-  return value
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
-}
-
-const FAQ_ITEMS = [
-  {
-    question: "Who is Ishwar Sahani?",
-    answer:
-      "Ishwar Sahani (also known as Ishwar Kumar) is a Frontend Developer based in Gurugram, India. He works full-time at a startup where he builds product UI for platforms like Klakar and Dizivizi using Next.js, React, TypeScript, and Tailwind CSS. He also takes on selective freelance frontend projects.",
-  },
-  {
-    question:
-      "What technologies does Ishwar Sahani specialize in?",
-    answer:
-      "Ishwar Sahani specializes in Next.js, React.js, Node.js, TypeScript, JavaScript (ES2023+), Tailwind CSS, HTML5, and CSS3. He is comfortable across the MERN stack (MongoDB, Express, React, Node.js) and the PERN stack (PostgreSQL, Express, React, Node.js), with strong experience in REST API integration, responsive design, and SEO-friendly frontend architecture.",
-  },
-  {
-    question:
-      "Is Ishwar Sahani a Next.js full stack developer?",
-    answer:
-      "Yes. Ishwar works as a Next.js developer with full-stack capabilities — building frontend UI with Next.js App Router and React Server Components, integrating REST APIs on Node.js, and shipping production web applications end-to-end. He is comfortable across the MERN and PERN stacks.",
-  },
-  {
-    question:
-      "Is Ishwar Sahani available for freelance frontend work?",
-    answer:
-      "Yes. Alongside his full-time role, Ishwar takes selective freelance frontend projects from his base in Gurugram, India, working remotely with clients worldwide. Projects include responsive websites, web apps, performance audits, and ongoing website partnerships. Reach out via WhatsApp or email for fastest response.",
-  },
-  {
-    question: "Where is Ishwar Sahani based?",
-    answer:
-      "Ishwar Sahani is based in Gurugram, Haryana, India. He works remotely with clients and teams worldwide, with availability aligned to IST (Indian Standard Time) business hours.",
-  },
-  {
-    question:
-      "How can I contact Ishwar Sahani for a frontend project?",
-    answer:
-      "The fastest way to reach Ishwar Sahani is via WhatsApp or email. Both channels are monitored personally during IST business hours, with replies typically under 4 hours. LinkedIn and GitHub are also open for professional inquiries.",
-  },
-  {
-    question:
-      "What projects has Ishwar Sahani shipped?",
-    answer:
-      "Ishwar has shipped responsive marketing websites, SaaS dashboards, learning platforms, productivity apps, and client web applications. Featured projects include Klakar (artist network), Dizivizi (video-location platform), Sandhee, MQUAD, Learning Network, and a Todos app — built with Next.js, React, and modern frontend tooling.",
-  },
-];
-
-/**
- * Builds the full JSON-LD graph for the homepage.
- *
- * Schemas included:
- *  - WebSite         (site identity + search box)
- *  - WebPage         (this URL)
- *  - Person          (entity — Ishwar Sahani, with alternateName)
- *  - ItemList        (featured projects)
- *  - Service[]       (each service from content)
- *  - ProfessionalService  (parent service summary)
- *  - ImageObject     (logo)
- *  - BreadcrumbList  (nav context)
- *  - FAQPage         (question/answer pairs)
- *
- * Returns a plain object suitable for
- * `<script type="application/ld+json">`.
- */
+/** Builds identity and project markup from the portfolio content. */
 export function buildJsonLdGraph() {
   const siteUrl = getSiteUrl();
   const pageUrl = absoluteUrl("/");
@@ -240,11 +141,6 @@ export function buildJsonLdGraph() {
         inLanguage: "en-IN",
         image: { "@id": `${siteUrl}#logo` },
         publisher: { "@id": `${siteUrl}#person` },
-        potentialAction: {
-          "@type": "SearchAction",
-          target: `${siteUrl}/?q={search_term_string}`,
-          "query-input": "required name=search_term_string",
-        },
       },
       {
         "@type": "WebPage",
@@ -261,7 +157,6 @@ export function buildJsonLdGraph() {
           width: siteConfig.profileImage.width,
           height: siteConfig.profileImage.height,
         },
-        breadcrumb: { "@id": `${siteUrl}#breadcrumb` },
       },
       {
         "@type": "ProfilePage",
@@ -308,12 +203,6 @@ export function buildJsonLdGraph() {
             name: "Gurugram",
           },
           skills: TOPIC_AUTHORITY.join(", "),
-          estimatedSalary: {
-            "@type": "MonetaryAmountDistribution",
-            name: "Frontend Developer salary in Gurugram, India",
-            currency: "INR",
-            median: 700000,
-          },
         },
         worksFor: [
           {
@@ -322,15 +211,10 @@ export function buildJsonLdGraph() {
             url: "https://klakar.com/",
           },
         ],
-        alumniOf: {
-          "@type": "EducationalOrganization",
-          name: "Computer Science Engineering, India",
-        },
         address: {
           "@type": "PostalAddress",
           addressLocality: "Gurugram",
           addressRegion: "Haryana",
-          postalCode: "122001",
           addressCountry: "IN",
         },
       },
@@ -354,50 +238,6 @@ export function buildJsonLdGraph() {
           },
         })),
       },
-      ...servicesData.map((service) => ({
-        "@type": "Service",
-        "@id": `${siteUrl}#service-${createHashId(service.title)}`,
-        name: service.title,
-        description: service.description,
-        serviceType: service.keywords.join(", "),
-        provider: { "@id": `${siteUrl}#person` },
-        areaServed: [
-          { "@type": "City", name: "Gurugram" },
-          { "@type": "State", name: "Haryana" },
-          { "@type": "Country", name: "India" },
-        ],
-      })),
-      {
-        "@type": "ProfessionalService",
-        "@id": `${siteUrl}#professional-service`,
-        name: "Ishwar Sahani — Frontend Development Services",
-        description:
-          "Freelance frontend development services: Next.js, React, Node.js, MERN stack, PERN stack, API integration, responsive web design, and SEO-friendly web application development.",
-        url: siteUrl,
-        image: profileImageUrl,
-        priceRange: "₹₹",
-        currenciesAccepted: "INR, USD",
-        paymentAccepted: "Cash, Bank Transfer, UPI",
-        provider: { "@id": `${siteUrl}#person` },
-        areaServed: [
-          { "@type": "City", name: "Gurugram" },
-          { "@type": "Country", name: "India" },
-          { "@type": "Place", name: "Remote Worldwide" },
-        ],
-        hasOfferCatalog: {
-          "@type": "OfferCatalog",
-          name: "Frontend Development Services",
-          itemListElement: servicesData.map((service) => ({
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "Service",
-              name: service.title,
-              description: service.description,
-              keywords: service.keywords.join(", "),
-            },
-          })),
-        },
-      },
       {
         "@type": "ImageObject",
         "@id": `${siteUrl}#logo`,
@@ -406,56 +246,6 @@ export function buildJsonLdGraph() {
         height: siteConfig.logo.height,
         caption: siteConfig.logo.alt,
       },
-      {
-        "@type": "BreadcrumbList",
-        "@id": `${siteUrl}#breadcrumb`,
-        itemListElement: [
-          {
-            "@type": "ListItem",
-            position: 1,
-            name: "Home",
-            item: siteUrl,
-          },
-          {
-            "@type": "ListItem",
-            position: 2,
-            name: "About",
-            item: `${siteUrl}/#about`,
-          },
-          {
-            "@type": "ListItem",
-            position: 3,
-            name: "Experience",
-            item: `${siteUrl}/#experience`,
-          },
-          {
-            "@type": "ListItem",
-            position: 4,
-            name: "Projects",
-            item: `${siteUrl}/#projects`,
-          },
-          {
-            "@type": "ListItem",
-            position: 5,
-            name: "Contact",
-            item: `${siteUrl}/#contact`,
-          },
-        ],
-      },
-      {
-        "@type": "FAQPage",
-        "@id": `${siteUrl}#faq`,
-        mainEntity: FAQ_ITEMS.map((faq) => ({
-          "@type": "Question",
-          name: faq.question,
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: faq.answer,
-          },
-        })),
-      },
     ],
   };
 }
-
-export { FAQ_ITEMS };

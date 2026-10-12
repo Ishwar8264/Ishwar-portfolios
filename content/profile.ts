@@ -6,9 +6,9 @@ export const profileData: ProfileData = {
   location: "Gurugram, India",
   education: "B.Tech in Computer Science Engineering",
   tagline:
-    "Frontend Developer at a startup, building fast, responsive Next.js and React.js products — available for select freelance work.",
+    "Frontend Developer building responsive React and Next.js products — open to full-time frontend engineering opportunities.",
   summary:
-    "I am Ishwar Sahani, a Frontend Developer based in Gurugram, India, currently working full-time at a startup where I ship product UI for platforms like Klakar and Dizivizi. I hold a B.Tech in Computer Science Engineering and have spent the last year owning frontend features end-to-end in a fast-moving startup environment — translating product requirements into responsive, accessible, and production-ready interfaces with Next.js, React.js, TypeScript, and Tailwind CSS. Alongside my full-time role, I take on selective freelance frontend projects for clients across India — websites, landing pages, and web applications where I can ship quickly and own the frontend end-to-end. My focus is simple: write clean, maintainable code, improve performance, and create seamless digital experiences that convert visitors into customers.",
+    "I am Ishwar Sahani, a Frontend Developer based in Gurugram, India, currently working full-time at a startup where I ship product UI for platforms like Klakar and Dizivizi. I hold a B.Tech in Computer Science Engineering and have spent the last year owning frontend features end-to-end in a fast-moving startup environment — translating product requirements into responsive, accessible, and production-ready interfaces with Next.js, React.js, TypeScript, and Tailwind CSS. I am open to full-time frontend engineering opportunities where I can contribute to product development and collaborate with a strong engineering team. My focus is simple: write clean, maintainable code, improve performance, and build accessible, reliable interfaces for real users.",
   focus: [
     "Next.js",
     "React.js",

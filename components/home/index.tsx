@@ -41,7 +41,7 @@ export default function HomeSection({ profile, contact }: HomeSectionProps) {
       color: "rgba(244, 114, 182, 0.24)",
     },
     {
-      text: "selective freelance frontend projects",
+      text: "full-time frontend engineering opportunities",
       color: "rgba(74, 222, 128, 0.24)",
     },
     {

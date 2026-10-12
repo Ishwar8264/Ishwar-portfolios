@@ -34,19 +34,9 @@ export type ProjectData = {
   status: string;
 };
 
-export type ServiceData = {
-  title: string;
-  description: string;
-  keywords: string[];
-};
-
 export type ExperienceData = {
-  /**
-   * Discriminator used by the Experience section to render items under
-   * the correct group: "job" for full-time employment, "freelance" for
-   * independent client work. Defaults to "job" for backward compatibility.
-   */
-  kind?: "job" | "freelance";
+  /** Employment entry; defaults to a job when omitted. */
+  kind?: "job";
   company: string;
   companyUrl?: string;
   role: string;

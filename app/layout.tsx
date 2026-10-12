@@ -116,11 +116,8 @@ export const metadata: Metadata = {
     ICBM: siteConfig.geo.icbm,
     // Language / region hints.
     "language": "en-IN",
-    "revisit-after": "7 days",
     "distribution": "global",
     "rating": "general",
-    // AI crawler hints — explicit allow (mirrors robots.txt).
-    "ai-bot-allow": "GPTBot, ClaudeBot, PerplexityBot, Google-Extended, CCBot, OAI-SearchBot",
   },
   ...(googleVerification
     ? {
