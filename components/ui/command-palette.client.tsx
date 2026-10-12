@@ -14,7 +14,6 @@ import {
   BriefcaseBusiness,
   Award,
   Wrench,
-  Sparkles,
   FolderGit2,
   Github,
   Mail,
@@ -66,11 +65,11 @@ const ALL_ITEMS: PaletteItem[] = [
   {
     id: "nav-experience",
     label: "Experience",
-    hint: "Work timeline & client work",
+    hint: "Professional work timeline",
     group: "Navigate",
     href: "#experience",
     icon: BriefcaseBusiness,
-    keywords: ["work", "job", "freelance", "career"],
+    keywords: ["work", "job", "employment", "career"],
   },
   {
     id: "nav-certifications",
@@ -89,15 +88,6 @@ const ALL_ITEMS: PaletteItem[] = [
     href: "#skills",
     icon: Wrench,
     keywords: ["tech", "stack", "tools", "languages"],
-  },
-  {
-    id: "nav-services",
-    label: "Services",
-    hint: "What I can help with",
-    group: "Navigate",
-    href: "#services",
-    icon: Sparkles,
-    keywords: ["offer", "help", "freelance", "work"],
   },
   {
     id: "nav-projects",

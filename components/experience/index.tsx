@@ -3,7 +3,6 @@ import {
   BadgeCheck,
   BriefcaseBusiness,
   Building2,
-  Laptop,
   MapPin,
   Sparkles,
   Workflow,
@@ -39,7 +38,7 @@ function isCurrentRole(item: ExperienceData) {
   return Boolean(item.current) || item.period.includes("Present");
 }
 
-type GroupKey = "job" | "freelance";
+type GroupKey = "job";
 
 const GROUP_META: Record<
   GroupKey,
@@ -63,17 +62,6 @@ const GROUP_META: Record<
     accentFrom: "#38bdf8",
     accentTo: "#6366f1",
     icon: BriefcaseBusiness,
-  },
-  freelance: {
-    label: "Freelance Work",
-    eyebrow: "Independent",
-    headline:
-      "Selective freelance frontend projects — websites, landing pages, and web apps shipped alongside my full-time role.",
-    description:
-      "Available for freelance frontend work. Below are select freelance engagements where I owned the frontend end-to-end.",
-    accentFrom: "#fb7185",
-    accentTo: "#f59e0b",
-    icon: Laptop,
   },
 };
 
@@ -383,7 +371,6 @@ export default function ExperienceSection({
   experiences,
 }: ExperienceSectionProps) {
   const jobItems = experiences.filter((item) => (item.kind ?? "job") === "job");
-  const freelanceItems = experiences.filter((item) => item.kind === "freelance");
 
   return (
     <section
@@ -401,12 +388,11 @@ export default function ExperienceSection({
             </AnimatedShinyText>
           </p>
           <h2 className="mx-auto max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">
-            Frontend experience across startups and freelance clients.
+            Frontend engineering experience across product teams.
           </h2>
           <p className="mx-auto max-w-2xl text-sm leading-6 text-muted-foreground sm:text-base">
-            Currently working full-time as a Frontend Developer at a startup,
-            with selective freelance frontend work on the side. Below is the
-            full breakdown — split into employment and independent engagements.
+            Full-time frontend roles building responsive interfaces, integrating
+            APIs, and collaborating with product and engineering teams.
           </p>
         </BlurFade>
 
@@ -416,11 +402,6 @@ export default function ExperienceSection({
           </div>
         ) : null}
 
-        {freelanceItems.length > 0 ? (
-          <div>
-            <ExperienceGroup groupKey="freelance" items={freelanceItems} />
-          </div>
-        ) : null}
       </div>
     </section>
   );

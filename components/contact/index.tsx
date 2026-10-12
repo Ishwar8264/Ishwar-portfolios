@@ -6,7 +6,7 @@ import {
   MessageCircle,
   Phone,
   MapPin,
-  Clock,
+  BriefcaseBusiness,
   FileDown,
 } from "lucide-react";
 
@@ -38,13 +38,13 @@ export default function ContactSection({ contact }: ContactSectionProps) {
   const whatsappUrl = contact.whatsapp
     ? buildWhatsAppUrl(
         contact.whatsapp,
-        "Hi Ishwar, I saw your portfolio and would like to discuss a frontend project.",
+        "Hi Ishwar, I saw your portfolio and would like to discuss a full-time frontend engineering opportunity.",
       )
     : null;
 
   const mailtoUrl = buildMailtoUrl(
     contact.email,
-    "Frontend Project Inquiry — from your portfolio",
+    "Frontend Engineering Job Opportunity — from your portfolio",
   );
 
   const directChannels = [
@@ -104,13 +104,12 @@ export default function ContactSection({ contact }: ContactSectionProps) {
                 </AnimatedShinyText>
               </p>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-                Let&apos;s build something fast, responsive, and modern.
+                Let&apos;s discuss frontend engineering opportunities.
               </h2>
               <p className="mt-3 max-w-xl text-sm text-muted-foreground sm:text-base">
-                Available for freelance frontend work, React &amp; Next.js
-                project builds, performance audits, and ongoing website
-                partnerships. Replies usually within a few hours during IST
-                business hours.
+                Open to full-time frontend roles working with React, Next.js, and
+                TypeScript. Reach out to discuss your team, the role, and how
+                my product experience can contribute.
               </p>
 
               <div className="mt-6 grid gap-2.5 sm:grid-cols-2">
@@ -196,14 +195,14 @@ export default function ContactSection({ contact }: ContactSectionProps) {
               <div className="mt-6 grid gap-3 sm:grid-cols-3">
                 <div className="rounded-2xl border border-border/65 bg-background/60 px-3 py-3 backdrop-blur">
                   <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
-                    <Clock className="size-3.5 text-emerald-500" />
-                    Response Time
+                    <BriefcaseBusiness className="size-3.5 text-emerald-500" />
+                    Opportunities
                   </div>
                   <p className="mt-1.5 text-sm font-semibold text-foreground">
-                    Under 4 hours
+                    Full-time roles
                   </p>
                   <p className="text-[11px] text-muted-foreground">
-                    Mon–Sat, IST business hours
+                    Frontend engineering
                   </p>
                 </div>
                 <div className="rounded-2xl border border-border/65 bg-background/60 px-3 py-3 backdrop-blur">
@@ -215,19 +214,19 @@ export default function ContactSection({ contact }: ContactSectionProps) {
                     Gurugram, India
                   </p>
                   <p className="text-[11px] text-muted-foreground">
-                    Remote-friendly worldwide
+                    IST (UTC+05:30)
                   </p>
                 </div>
                 <div className="rounded-2xl border border-border/65 bg-background/60 px-3 py-3 backdrop-blur">
                   <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
                     <MessageCircle className="size-3.5 text-fuchsia-500" />
-                    Quick Chat
+                    Recruiter Contact
                   </div>
                   <p className="mt-1.5 text-sm font-semibold text-foreground">
-                    WhatsApp preferred
+                    Email or LinkedIn
                   </p>
                   <p className="text-[11px] text-muted-foreground">
-                    For fast project scoping
+                    For role discussions
                   </p>
                 </div>
               </div>
@@ -248,8 +247,8 @@ export default function ContactSection({ contact }: ContactSectionProps) {
                 Pick the channel that works for you.
               </h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                All channels are monitored personally — no agencies, no
-                gatekeepers. Expect a real reply from me directly.
+                Contact me directly about frontend roles, interviews, and
+                engineering teams. My resume is available above.
               </p>
 
               <div className="mt-5 space-y-2.5">
@@ -288,12 +287,11 @@ export default function ContactSection({ contact }: ContactSectionProps) {
                 <div className="mt-5 rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-3.5">
                   <p className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-emerald-700 dark:text-emerald-300">
                     <MessageCircle className="size-3.5" />
-                    Pro tip
+                    Job inquiries
                   </p>
                   <p className="mt-1.5 text-xs text-muted-foreground">
-                    For new project inquiries, WhatsApp is the fastest way to
-                    reach me. Share your requirements and timeline — I&apos;ll
-                    come back with questions and a quick scope estimate.
+                    Share the company name, job description, tech stack, and work
+                    location so we can discuss whether the role is a good fit.
                   </p>
                 </div>
               ) : null}
