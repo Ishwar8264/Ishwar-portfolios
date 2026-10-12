@@ -9,18 +9,15 @@ export const siteConfig = {
   alternateName: "Ishwar Kumar",
   /** Short brand handle used in navbars, PWA manifests, OG `site_name`. */
   shortName: "Ishwar",
-  /**
-   * SEO <title>. Includes the three highest-intent keyword phrases a
-   * recruiter or founder would search for. Keep under 60 characters.
-   */
+  /** Concise identity, frontend role, and location for search results. */
   title:
-    "Ishwar Sahani | Frontend Developer — React & Next.js",
+    "Ishwar Sahani | Frontend Engineer in Gurgaon",
   /**
    * Meta description — 150-160 chars. Front-loaded with the primary
    * entity + role + location so snippets read cleanly on Google.
    */
   description:
-    "Ishwar Sahani is a Frontend Developer in Gurugram building React, Next.js, and TypeScript products. Explore work experience, projects, skills, and resume.",
+    "Ishwar Sahani, Frontend Developer in Gurugram (Gurgaon), building React, Next.js and TypeScript products. Open to frontend engineer and software engineer roles.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://ishwar8264.github.io",
   locale: "en_IN",
   /** Canonical locale code used in hreflang / OG `locale`. */
@@ -55,6 +52,23 @@ export const siteConfig = {
     "Frontend Developer",
     "Frontend Developer India",
     "Frontend Developer Gurugram",
+    "Frontend Developer Gurgaon",
+    "Frontend Engineer",
+    "Frontend Engineer Gurgaon",
+    "Frontend Engineer Gurugram",
+    "Front End Developer Gurgaon",
+    "Front End Engineer Gurugram",
+    "Software Engineer",
+    "Software Engineer Gurgaon",
+    "Software Engineer Gurugram",
+    "Frontend Software Engineer",
+    "Frontend Software Engineer Gurgaon",
+    "React Developer Gurgaon",
+    "React Developer Gurugram",
+    "Next.js Developer Gurgaon",
+    "Next.js Developer Gurugram",
+    "JavaScript Developer Gurgaon",
+    "TypeScript Developer Gurgaon",
     "React Developer India",
     "Next.js Developer India",
     "Next.js Full Stack Developer",
@@ -143,7 +157,7 @@ export function buildJsonLdGraph() {
         publisher: { "@id": `${siteUrl}#person` },
       },
       {
-        "@type": "WebPage",
+        "@type": "ProfilePage",
         "@id": `${siteUrl}#webpage`,
         url: pageUrl,
         name: siteConfig.title,
@@ -151,22 +165,13 @@ export function buildJsonLdGraph() {
         inLanguage: "en-IN",
         isPartOf: { "@id": `${siteUrl}#website` },
         about: { "@id": `${siteUrl}#person` },
+        mainEntity: { "@id": `${siteUrl}#person` },
         primaryImageOfPage: {
           "@type": "ImageObject",
           url: profileImageUrl,
           width: siteConfig.profileImage.width,
           height: siteConfig.profileImage.height,
         },
-      },
-      {
-        "@type": "ProfilePage",
-        "@id": `${siteUrl}#profile-page`,
-        url: pageUrl,
-        name: `${siteConfig.name} — Frontend Developer Portfolio`,
-        description: siteConfig.description,
-        inLanguage: "en-IN",
-        mainEntity: { "@id": `${siteUrl}#person` },
-        isPartOf: { "@id": `${siteUrl}#website` },
       },
       {
         "@type": "Person",
@@ -223,7 +228,7 @@ export function buildJsonLdGraph() {
         "@id": `${siteUrl}#featured-projects`,
         name: "Featured projects by Ishwar Sahani",
         description:
-          "Frontend projects shipped by Ishwar Sahani using Next.js, React, and TypeScript — including Klakar, Dizivizi, Sandhee, MQUAD, and Learning Network.",
+          `Featured frontend projects by ${siteConfig.name}: ${featuredProjects.map((project) => project.title).join(", ")}.`,
         itemListElement: featuredProjects.map((project, index) => ({
           "@type": "ListItem",
           position: index + 1,

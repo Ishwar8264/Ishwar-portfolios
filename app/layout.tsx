@@ -149,6 +149,10 @@ export default function RootLayout({
     <html lang="en-IN" data-theme="light" suppressHydrationWarning>
       <head>
         <ThemeScript />
+        <noscript>
+          {/* Reveal section content when scroll animations cannot run. */}
+          <style>{`.blur-fade { opacity: 1 !important; filter: none !important; transform: none !important; }`}</style>
+        </noscript>
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

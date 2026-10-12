@@ -2,9 +2,9 @@
 
 > Ishwar Sahani (also known as Ishwar Kumar) is a Frontend Developer based in Gurugram, India, specializing in Next.js, React, Node.js, and full-stack MERN/PERN development. He works full-time as a Frontend Developer at a startup.
 
-Ishwar Sahani is a Frontend Developer in Gurugram, Haryana, India. He currently works full-time as a Frontend Developer at a startup, where he ships product UI for platforms like Klakar (an artist network) and Dizivizi (a video-location platform). He is open to full-time frontend engineering opportunities.
+Ishwar Sahani is a Frontend Developer in Gurugram, Haryana, India. He currently works full-time as a Frontend Developer at Klakar (an artist network). Previously, he worked on map-based video discovery and responsive video interfaces at Dizivizi (a video-location platform). He is open to full-time frontend engineering opportunities.
 
-He holds a B.Tech in Computer Science Engineering and has spent the last year owning frontend features end-to-end in a fast-moving startup environment, translating product requirements into responsive, accessible, and production-ready interfaces.
+He holds a B.Tech in Computer Science Engineering and has experience owning frontend features end-to-end in a fast-moving startup environment, translating product requirements into responsive, accessible, and production-ready interfaces.
 
 ## Primary Skills
 
@@ -87,7 +87,7 @@ Website: https://dizivizi.com/
 
 ## Job Opportunities
 
-Open to full-time frontend engineering opportunities using React, Next.js, and TypeScript. Contact Ishwar by email or LinkedIn for role discussions.
+Based in Gurugram (Gurgaon), India, and open to full-time Frontend Engineer and Software Engineer roles focused on React, Next.js, and TypeScript. Contact Ishwar by email or LinkedIn for role discussions.
 
 - Full-time Frontend Developer role: Currently employed at Klakar (startup).
 - Languages: English (en-IN), Hindi (hi-IN).

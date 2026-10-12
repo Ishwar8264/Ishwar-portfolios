@@ -81,7 +81,7 @@ export function BlurFade({
         ease: "easeOut",
         ...(shouldTransitionFilter ? { filter: { duration } } : {}),
       }}
-      className={className}
+      className={["blur-fade", className].filter(Boolean).join(" ")}
       {...props}
     >
       {children}

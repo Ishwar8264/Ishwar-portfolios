@@ -9,11 +9,9 @@ import { MagicCard } from "@/components/ui/magic-card";
 import { Marquee } from "@/components/ui/marquee";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { SparklesText } from "@/components/ui/sparkles-text";
-import { TypingAnimation } from "@/components/ui/typing-animation";
 import { resumeHref } from "@/content/profile";
 import type { ContactData, ProfileData } from "@/types/portfolio";
 
-import AnimatedName from "./animated-name.client";
 import MotionDemo from "./motion-demo.client";
 
 type HomeSectionProps = {
@@ -29,11 +27,11 @@ export default function HomeSection({ profile, contact }: HomeSectionProps) {
   ] as const;
   const summaryHighlights = [
     {
-      text: "Frontend Developer based in Gurugram, India",
+      text: "Frontend Developer based in Gurugram (Gurgaon), India",
       color: "rgba(96, 165, 250, 0.28)",
     },
     {
-      text: "currently working full-time at a startup where I ship product UI for platforms like Klakar and Dizivizi",
+      text: "currently build product interfaces at Klakar",
       color: "rgba(125, 211, 252, 0.28)",
     },
     {
@@ -119,29 +117,15 @@ export default function HomeSection({ profile, contact }: HomeSectionProps) {
             </div>
           </BlurFade>
 
-          <BlurFade inView delay={0.09}>
-            <div className="max-w-4xl">
-              <h1 className="leading-[1.06] font-semibold tracking-tight">
-                <span className="hero-name-glow">
-                  <AnimatedName
-                    name={profile.name}
-                    place="hero"
-                    size="hero"
-                    palette="neon"
-                  />
-                </span>
-              </h1>
-              <TypingAnimation
-                as="p"
-                duration={52}
-                delay={220}
-                startOnView={false}
-                className="hero-tagline mt-3 block text-xl leading-tight font-medium text-muted-foreground sm:text-3xl"
-              >
-                {profile.tagline}
-              </TypingAnimation>
-            </div>
-          </BlurFade>
+          {/* Keep the primary identity and role readable before JavaScript runs. */}
+          <div className="max-w-4xl">
+            <h1 className="text-3xl leading-[1.06] font-semibold tracking-tight sm:text-5xl">
+              <span className="hero-name-glow">{profile.name}</span>
+            </h1>
+            <p className="hero-tagline mt-3 block text-xl leading-tight font-medium text-muted-foreground sm:text-3xl">
+              {profile.tagline}
+            </p>
+          </div>
 
           <BlurFade inView delay={0.12}>
             <p className="max-w-3xl text-sm leading-7 text-muted-foreground sm:text-base">

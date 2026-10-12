@@ -19,7 +19,7 @@ export default function Home() {
     <main className="bg-background text-foreground">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
       />
       {/*
        * Screen-reader-only factual descriptor for AI crawlers that strip

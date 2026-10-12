@@ -8,7 +8,7 @@ export const profileData: ProfileData = {
   tagline:
     "Frontend Developer building responsive React and Next.js products — open to full-time frontend engineering opportunities.",
   summary:
-    "I am Ishwar Sahani, a Frontend Developer based in Gurugram, India, currently working full-time at a startup where I ship product UI for platforms like Klakar and Dizivizi. I hold a B.Tech in Computer Science Engineering and have spent the last year owning frontend features end-to-end in a fast-moving startup environment — translating product requirements into responsive, accessible, and production-ready interfaces with Next.js, React.js, TypeScript, and Tailwind CSS. I am open to full-time frontend engineering opportunities where I can contribute to product development and collaborate with a strong engineering team. My focus is simple: write clean, maintainable code, improve performance, and build accessible, reliable interfaces for real users.",
+    "I am Ishwar Sahani, a Frontend Developer based in Gurugram (Gurgaon), India. I currently build product interfaces at Klakar using Next.js, React.js, TypeScript, and Tailwind CSS. Previously, I worked on map-based video discovery and responsive video interfaces at Dizivizi. My experience includes API integration, reusable UI components, responsive design, and collaboration with product and backend teams. I hold a B.Tech in Computer Science Engineering and am open to full-time frontend engineering opportunities, including Frontend Engineer and Software Engineer roles focused on React and Next.js. I care about clean, maintainable code and accessible, reliable interfaces for real users.",
   focus: [
     "Next.js",
     "React.js",
